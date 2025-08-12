@@ -1,0 +1,72 @@
+﻿.createDocumentationButtonContainer{
+    display: flex;
+    justify-content: center;
+}
+.displayLanguagesContainer{
+    margin-bottom: 13vh;
+}
+.languageContainer{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+   
+}
+.language {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1A1A1A;
+    border-radius: 20px;
+    position: relative;
+}
+.languageImageContainer{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    border-radius: 20px;
+}
+.languageImage {
+    height: 200px;
+    padding: 20px;
+    width: auto;
+}
+.btn-language {
+    width: 200px;
+    background-color: #007C7C;
+}
+.btn-language:hover {
+    background-color: #70B6B6;
+    color: #016E6E;
+}
+.trash {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    width: 60px;
+    padding: 10px 5px;
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+}
+.trash:hover {
+    background-color: #a10000;
+    cursor: pointer;
+    top: -10px;
+}
+.pen {
+    position: absolute;
+    top: 75px;
+    right: 0;
+    background-color: #00BBFF;
+    width: 60px;
+    padding: 10px 5px;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.pen:hover {
+    background-color: #0077aa;
+    cursor: pointer;
+    top: 65px;
+}
