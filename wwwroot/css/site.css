@@ -41,12 +41,12 @@ body {
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #431264;
+    background: #024343;
     border-radius: 10px;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #8b729b;
+    background: #70B6B6;
 }
 
 /* Home Page */
