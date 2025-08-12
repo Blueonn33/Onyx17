@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Onyx17.Data;
+using Onyx17.Repositories;
+using Onyx17.Repositories.Interfaces;
 
 namespace Onyx17;
 
@@ -19,6 +21,9 @@ public class Program
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddControllersWithViews();
+
+        builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
+        builder.Services.AddScoped<IChapterRepository, ChapterRepository>();
 
         var app = builder.Build();
 
