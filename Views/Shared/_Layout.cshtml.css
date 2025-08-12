@@ -45,9 +45,10 @@ button.accept-policy {
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+  background-color: red !important;
 }
-.navContainer {
-    position: fixed;
-    top: 0;
-    z-index: 10;
+.containerText {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
