@@ -1,0 +1,72 @@
+﻿.imageContentContainer {
+    border-bottom-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+}
+.imageContainer {
+    display: flex;
+    justify-content: center;
+}
+.imageHome{
+    width: 300px;
+    height: auto;
+}
+.onyxHome{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    font-size: 6rem;
+}
+.onyxHomeContainer {
+    display: flex;
+    justify-content: center;
+}
+.onyxDescriptionContainer {
+    text-indent: 50px;
+    border: 5px solid black;
+    padding: 20px;
+    border-radius: 20px;
+}
+.onyxDescription {
+    font-weight: bold;
+    font-size: 22px;
+    color: white;
+}
+.functionalitiesContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 220px;
+    gap: 30px;
+}
+.functionality {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #1A1A1A;
+}
+.functionalityImageContainer {
+    background-color: white;
+    width: 130px;
+    height: auto;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+/* Documentation */
+.documentationContainer {
+    display: grid;
+    justify-content: center;
+}
+.documentationContentContainer {
+    position: relative;
+    background-color: #70B6B6;
+    width: 187vh;
+    height: 500px;
+    z-index: 0;
+}
+.topLeftImage {
+    position: absolute;
+    top: -200px;
+    left: -70px;
+    z-index: -1;
+}
