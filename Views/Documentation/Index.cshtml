@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Language>
+@{
+    ViewData["Title"] = "Документация";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Documentation/DocumentationStyles.css" />
+</head>
+<body>
+    <div class="createDocumentationButtonContainer mt-5">
+        <a asp-action="Create" asp-controller="Documentation" class="btn btn-light btn-lg">Създай</a>
+    </div>
+    <div class="container mt-5 displayLanguagesContainer">
+        <div class="languageContainer">
+          
+            @foreach(var language in Model)
+            {
+                <div class="language" id="language-@language.Id">
+                    <a onclick="deleteLanguage(@language.Id)"><img src="~/Images/trash-can.png" class="trash" /></a>
+                    <a><img src="~/Images/pen.png" class="pen" /></a>
+                    <div class="languageImageContainer p-3 mt-3">
+                        @if (language.ImageData != null)
+                        {
+                            <img src="@Url.Action("GetLanguageImage", "Documentation", new { languageId = language.Id })"
+                                 class="img-fluid languageImage" />
+                        }
+                    </div>
+                    <div class="languageNameContainer">
+                        <p class="fs-1 text-light">@language.Name</p>
+                    </div>
+                    <div class="languageButtonContainer">
+                        <button class="btn btn-lg mb-3 btn-language">Отвори</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+
+@section Scripts
+{
+    <script>
+        function deleteLanguage(id)
+        {
+            if(confirm("Изтриване"))
+            {
+                $.ajax({
+                    url: "@Url.Action("Delete", "Documentation")?languageId=" + id,
+                    type: "DELETE",
+                    success: function() {
+                        $("#language-" + id).remove();
+                    },
+                    error: function() {
+                        alert("Не стана");
+                    }
+                });
+            }
+        }
+    </script>
+}

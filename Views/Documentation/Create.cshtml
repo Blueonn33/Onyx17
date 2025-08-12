@@ -1,0 +1,30 @@
+﻿@model Onyx17.ViewModels.LanguageViewModel;
+@{
+    ViewData["Title"] = "Създаване на документация";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Documentation/CreateStyles.css" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="fs-1 text-light mb-5">Създаване на документация</h1>
+        <form method="post" asp-action="Create" enctype="multipart/form-data" class="documentationForm">
+            <div class="mb-4">
+                <label asp-for="ImageFile" class="form-label fs-3 text-light">Изображение</label>
+                <input asp-for="ImageFile" class="form-control" type="file" />
+            </div>
+            <div class="mb-4">
+                <label asp-for="Name" class="form-label fs-3 text-light">Име</label>
+                <input asp-for="Name" class="form-control"/>
+            </div>
+            <div class="mb-3 documentationFormButtons mt-5 mb-5">
+                <button type="submit" class="btn btn-lg btn-submit">Създай</button>
+            </div>
+            <div class="mb-3 documentationFormButtons">
+                <a asp-action="Index" asp-controller="Documentation" class="btn btn-lg btn-back">Назад</a>
+            </div>
+        </form>
+    </div>
+</body>
