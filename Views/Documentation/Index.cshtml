@@ -30,7 +30,10 @@
                         <p class="fs-1 text-light">@language.Name</p>
                     </div>
                     <div class="languageButtonContainer">
-                        <button class="btn btn-lg mb-3 btn-language">Отвори</button>
+                        <a class="btn btn-lg mb-3 btn-language" asp-action="Index" asp-controller="Chapter" 
+                            asp-route-languageId="@language.Id">
+                            Отвори
+                        </a>
                     </div>
                 </div>
             }
