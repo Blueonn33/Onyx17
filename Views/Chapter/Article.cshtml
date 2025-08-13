@@ -1,0 +1,20 @@
+﻿@model Onyx17.Models.Chapter
+@{
+    ViewData["Title"] = "Статия";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Chapter/ChapterStyles.css" />
+</head>
+<body>
+    @* <h1 class="mt-5 text-light mb-5">Статия</h1> *@
+    <div class="iframeContainer mt-3">
+        <a asp-action="Index" asp-asp-controller="Chapter" class="btn btn-lg btn-light articleBack" 
+            asp-route-languageId="@ViewBag.languageId">
+            Назад
+        </a>
+        <iframe class="iframeArticle" src="@Url.Action("GetPdf", "Chapter", new { chapterId = Model.Id })">
+        </iframe>
+    </div>
+</body>

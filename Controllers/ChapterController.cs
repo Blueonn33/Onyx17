@@ -89,21 +89,34 @@ namespace Onyx17.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Article(int chapterId)
+        {
+            var chapter = await _repository.GetChapterByIdAsync(chapterId);
+
+            if (chapter == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.LanguageId = chapter.LanguageId;
+            return View("Article", chapter);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetPdf(int chapterId)
         {
-            if(chapterId == 0)
+            if (chapterId == 0)
             {
                 return NotFound();
             }
 
             var chapter = await _repository.GetChapterByIdAsync(chapterId);
 
-            if(chapter == null || chapter.PdfFileData == null || chapter.PdfMimeType == null)
+            if (chapter == null || chapter.PdfFileData == null || chapter.PdfMimeType == null)
             {
                 return NotFound();
             }
 
-            ViewBag.ChapterId = chapterId;
             return File(chapter.PdfFileData, chapter.PdfMimeType);
         }
 
