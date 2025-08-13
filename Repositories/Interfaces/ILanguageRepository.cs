@@ -8,5 +8,7 @@ namespace Onyx17.Repositories.Interfaces
         public Task<Language?> GetLanguageByIdAsync(int languageId);
         public Task CreateLanguageAsync(Language language);
         public Task DeleteLanguageAsync(int languageId);
+
+        public Task UpdateLanguageAsync(Language language);
     }
 }

@@ -30,32 +30,96 @@ namespace Onyx17.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(LanguageViewModel model)
         {
-            if(ModelState.IsValid)
+            if (model.ImageFile != null && model.ImageFile.Length > 0)
             {
-                byte[]? imageData = null;
-                string? mimeType = null;
+                using (var ms = new MemoryStream())
+                {
+                    await model.ImageFile.CopyToAsync(ms);
+                    model.ImageData = ms.ToArray();
+                    model.ImageMimeType = model.ImageFile.ContentType;
+                }
+            }
+
+            var language = new Language
+            {
+                Name = model.Name,
+                ImageData = model.ImageData,
+                ImageMimeType = model.ImageMimeType
+            };
+
+            await _repository.CreateLanguageAsync(language);
+
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int languageId)
+        {
+            if (languageId == 0)
+            {
+                return NotFound();
+            }
+
+            var language = await _repository.GetLanguageByIdAsync(languageId);
+
+            if (language == null)
+            {
+                return NotFound();
+            }
+
+            var languageVm = new LanguageViewModel
+            {
+                Name = language.Name,
+                ImageData = language.ImageData,
+                ImageMimeType = language.ImageMimeType
+            };
+
+            ViewBag.LanguageId = languageId;
+
+            return View(languageVm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(LanguageViewModel model, int languageId)
+        {
+            if (languageId == 0)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var language = await _repository.GetLanguageByIdAsync(languageId);
+
+                if (language == null)
+                {
+                    return NotFound();
+                }
+
+                language.Name = model.Name;
 
                 if (model.ImageFile != null && model.ImageFile.Length > 0)
                 {
                     using (var ms = new MemoryStream())
                     {
                         await model.ImageFile.CopyToAsync(ms);
-                        imageData = ms.ToArray();
-                        mimeType = model.ImageFile.ContentType;
+                        language.ImageData = ms.ToArray();
+                        language.ImageMimeType = model.ImageFile.ContentType;
                     }
                 }
-
-                var language = new Language
+                else
                 {
-                    Name = model.Name,
-                    ImageData = imageData,
-                    ImageMimeType = mimeType
-                };
+                    language.ImageData = language.ImageData ?? model.ImageData;
+                    language.ImageMimeType = language.ImageMimeType ?? model.ImageMimeType;
+                }
 
-                await _repository.CreateLanguageAsync(language);
+                await _repository.UpdateLanguageAsync(language);
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index");
+            ViewBag.LanguageId = languageId;
+            return View(model);
         }
 
         [HttpGet]

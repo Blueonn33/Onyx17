@@ -51,11 +51,13 @@
     padding: 20px;
     border-radius: 20px;
 }
-a:link,
-a:visited,
-a:hover,
-a:active {
+.functionalityButton:link,
+.functionalityButton:visited,
+.functionalityButton:active {
     text-decoration: none;
+}
+.functionalityText{
+    color: white;
 }
 
 /* Documentation */

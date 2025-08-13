@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Chapter>
+@{
+    ViewData["Title"] = "Раздели";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Chapter/ChapterStyles.css" />
+</head>
+<body>
+    <h1 class="mt-5 mb-5 text-light">Раздели</h1>
+    <div class="chaptersContainer">
+        <a class="btn btn-lg btn-info mb-5" asp-action="Create" asp-controller="Chapter" 
+            asp-route-languageId="@ViewBag.languageId">Създай</a>
+
+        @foreach(var chapter in Model)
+        {
+            <div class="container chapterContainer mb-5 p-0">
+                <div class="chapterNameContainer">
+                    <p class="chapterName fs-2 text-light fw-bold ps-3">@chapter.Name</p>
+                </div>
+                <p class="chapterDescription fs-4 ps-3 mt-2">@chapter.Description</p>
+                <div class="chapterOpenContainer mb-3">
+                    <a class="btn btn-lg btn-light chapterOpen" asp-action="PdfFile" asp-controller="Chapter"
+                        asp-route-chapterId="@chapter.Id">Отвори</a>
+                </div>
+            </div>
+
+            @* @if (chapter.PdfFileData != null) *@
+            @* { *@
+            @*     <div> *@
+            @*         <iframe src="@Url.Action("GetPdf", "Chapter", new { chapterId = chapter.Id })" *@
+            @*                 width="100%" height="600px" style="border: 10px solid white;"> *@
+            @*         </iframe> *@
+            @*     </div> *@
+            @* } *@
+        }
+
+    </div>
+</body>
