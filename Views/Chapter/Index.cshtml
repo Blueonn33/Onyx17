@@ -21,19 +21,10 @@
                 </div>
                 <p class="chapterDescription fs-4 ps-3 mt-2">@chapter.Description</p>
                 <div class="chapterOpenContainer mb-3">
-                    <a class="btn btn-lg btn-light chapterOpen" asp-action="PdfFile" asp-controller="Chapter"
+                    <a class="btn btn-lg btn-light chapterOpen" asp-action="Article" asp-controller="Chapter"
                         asp-route-chapterId="@chapter.Id">Отвори</a>
                 </div>
             </div>
-
-            @* @if (chapter.PdfFileData != null) *@
-            @* { *@
-            @*     <div> *@
-            @*         <iframe src="@Url.Action("GetPdf", "Chapter", new { chapterId = chapter.Id })" *@
-            @*                 width="100%" height="600px" style="border: 10px solid white;"> *@
-            @*         </iframe> *@
-            @*     </div> *@
-            @* } *@
         }
 
     </div>

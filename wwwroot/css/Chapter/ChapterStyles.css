@@ -37,3 +37,18 @@ textarea {
 .chaptersContainer{
     margin-bottom: 10vh;
 }
+.iframeContainer{
+    margin-bottom: 5vh;
+    display: flex;
+    gap: 20px;
+}
+.articleBack{
+    align-self: flex-start;
+    margin-left: -100px;
+}
+.iframeArticle {
+    width: 100%;
+    height: 900px;
+    border: none;
+    border-radius: 10px;
+}
