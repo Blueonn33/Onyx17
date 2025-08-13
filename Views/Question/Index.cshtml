@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Question>
+@{
     ViewData["Title"] = "Въпроси";
 }
 
@@ -7,5 +8,33 @@
     <link rel="stylesheet" href="~/css/Question/QuestionStyles.css" />
 </head>
 <body>
-    <h1 class="mt-5 fs-1 text-light">Въпроси</h1>
+    <div class="questionsContainer mt-5">
+        <form methor="post" asp-action="Create" class="questionsForm">
+            <div class="me-5">
+                <label for="Text" class="form-label fs-3 text-light mb-3">Задай въпрос</label>
+                <input type="text" name="Text" class="form-control questionInput" />
+            </div>
+            <div class="questionSubmitButton">
+                <button type="submit" class="btn btn-lg btn-light">Изпрати</button>
+            </div>
+        </form>
+        <div class="questionsList">
+            @foreach (var question in Model)
+            {
+                <div class="mt-5 questionContentContainer">
+                    <div class="questionTextContainer me-5">
+                        <p class="ps-3 fs-4 text-light">@question.Text</p>
+                    </div>
+                    <div class="questionAnswerButton">
+                        <button class="btn btn-lg btn-light">Отговор</button>
+                    </div>
+                    @* <div class="questionReactionsContainer"> *@
+                    @*     <img src="~/Images/like.png" class="me-3 questionReaction"/> *@
+                    @*     <img src="~/Images/unlike.png" class="questionReaction" /> *@
+                    @* </div> *@
+                </div>
+                <hr class="questionHr"/>
+            }
+        </div>
+    </div>
 </body>
