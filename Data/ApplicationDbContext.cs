@@ -14,6 +14,8 @@ public class ApplicationDbContext : IdentityDbContext
 
     public DbSet<Language> Languages { get; set; }
     public DbSet<Chapter> Chapters { get; set; }
+    public DbSet<Question> Questions { get; set; }
+    public DbSet<Answer> Answers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -21,5 +23,7 @@ public class ApplicationDbContext : IdentityDbContext
 
         builder.ApplyConfiguration(new LanguageEntityConfiguration());
         builder.ApplyConfiguration(new ChapterEntityConfiguration());
+        builder.ApplyConfiguration(new QuestionEntityConfiguration());
+        builder.ApplyConfiguration(new AnswerEntityConfiguration());
     }
 }
