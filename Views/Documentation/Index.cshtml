@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="createDocumentationButtonContainer mt-5">
-        <a asp-action="Create" asp-controller="Documentation" class="btn btn-light btn-lg">Създай</a>
+        <a asp-action="Create" asp-controller="Documentation" class="btn btn-lg btn-createLanguage">Създай</a>
     </div>
     <div class="container mt-5 displayLanguagesContainer">
         <div class="languageContainer">
@@ -18,7 +18,7 @@
             {
                 <div class="language" id="language-@language.Id">
                     <a onclick="deleteLanguage(@language.Id)"><img src="~/Images/trash-can.png" class="trash" /></a>
-                    <a><img src="~/Images/pen.png" class="pen" /></a>
+                    <a asp-action="Edit" asp-controller="Documentation" asp-route-languageId="@language.Id"><img src="~/Images/pen.png" class="pen" /></a>
                     <div class="languageImageContainer p-3 mt-3">
                         @if (language.ImageData != null)
                         {

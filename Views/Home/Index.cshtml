@@ -23,28 +23,34 @@
         </p>
     </section>
     <section class="functionalitiesContainer mt-5 mb-5">
-        <a href="#documentation">
-            <div class="functionality">
-                <div class="functionalityImageContainer mt-3">
-                    <img src="Images/quill-drawing-a-line.png" class="img-fluid functionalityImage" />
+        <a href="#documentation" class="functionalityButton"
+           onmouseover="changeTheme('functionality1', 'functionalityImageContainer1', 'functionalityImage1', 'functionalityText1', '@Url.Content("~/Images/quill-drawing-a-lineWhite.png")')"
+           onmouseout="removeTheme('functionality1', 'functionalityImageContainer1', 'functionalityImage1', 'functionalityText1', '@Url.Content("~/Images/quill-drawing-a-line.png")')">
+            <div class="functionality" id="functionality1">
+                <div class="functionalityImageContainer mt-3" id="functionalityImageContainer1">
+                    <img src="Images/quill-drawing-a-line.png" class="img-fluid functionalityImage" id="functionalityImage1" />
                 </div>
-                <p class="lead fs-3 text-light mt-3 functionalityText">Документация</p>
+                <p class="lead fs-3 mt-3 functionalityText" id="functionalityText1">Документация</p>
             </div>
         </a>
-        <a href="#quiz">
-            <div class="functionality">
-                <div class="functionalityImageContainer mt-3">
-                    <img src="Images/wrong.png" class="img-fluid functionalityImage" />
+        <a href="#quiz" class="functionalityButton"
+           onmouseover="changeTheme('functionality2', 'functionalityImageContainer2', 'functionalityImage2', 'functionalityText2', '@Url.Content("~/Images/wrongWhite.png")')"
+           onmouseout="removeTheme('functionality2', 'functionalityImageContainer2', 'functionalityImage2', 'functionalityText2', '@Url.Content("~/Images/wrong.png")')">
+            <div class="functionality" id="functionality2">
+                <div class="functionalityImageContainer mt-3" id="functionalityImageContainer2">
+                    <img src="Images/wrong.png" class="img-fluid functionalityImage" id="functionalityImage2" />
                 </div>
-                <p class="lead fs-3 text-light mt-3 functionalityText">Тестове</p>
+                <p class="lead fs-3 mt-3 functionalityText" id="functionalityText2">Тестове</p>
             </div>
         </a>
-        <a href="#forum">
-            <div class="functionality">
-                <div class="functionalityImageContainer mt-3">
-                    <img src="Images/chat.png" class="img-fluid functionalityImage" />
+        <a href="#forum" class="functionalityButton"
+           onmouseover="changeTheme('functionality3', 'functionalityImageContainer3', 'functionalityImage3', 'functionalityText3', '@Url.Content("~/Images/chatWhite.png")')"
+           onmouseout="removeTheme('functionality3', 'functionalityImageContainer3', 'functionalityImage3', 'functionalityText3', '@Url.Content("~/Images/chat.png")')">
+            <div class="functionality" id="functionality3">
+                <div class="functionalityImageContainer mt-3" id="functionalityImageContainer3">
+                    <img src="Images/chat.png" class="img-fluid functionalityImage" id="functionalityImage3" />
                 </div>
-                <p class="lead fs-3 text-light mt-3 functionalityText">Форум</p>
+                <p class="lead fs-3 mt-3 functionalityText" id="functionalityText3">Форум</p>
             </div>
         </a>
     </section>
@@ -164,4 +170,24 @@
         </div>
     </section>
 </body>
+
+@section Scripts
+{
+    <script>
+        function changeTheme(funId, funImageContainerId, funImageId, funTextId, newImage) {
+            document.getElementById(funId).style.backgroundColor = "white";
+            document.getElementById(funImageContainerId).style.backgroundColor = "#1A1A1A";
+            document.getElementById(funImageId).src = newImage;
+            document.getElementById(funTextId).style.color = "black";
+        }
+
+        function removeTheme(funId, funImageContainerId, funImageId, funTextId, originalImage) {
+            document.getElementById(funId).style.backgroundColor = "#1A1A1A";
+            document.getElementById(funImageContainerId).style.backgroundColor = "white";
+            document.getElementById(funImageId).src = originalImage;
+            document.getElementById(funTextId).style.color = "white";
+        }
+
+    </script>
+}
 

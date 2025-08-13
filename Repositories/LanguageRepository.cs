@@ -63,5 +63,16 @@ namespace Onyx17.Repositories
             _context.Languages.Remove(language);
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdateLanguageAsync(Language language)
+        {
+            if(language == null)
+            {
+                throw new ArgumentNullException(nameof(language), "Езикът не може да бъде null.");
+            }
+
+            _context.Languages.Update(language);
+            await _context.SaveChangesAsync();
+        }
     }
 }

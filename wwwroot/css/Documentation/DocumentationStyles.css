@@ -76,3 +76,11 @@
     cursor: pointer;
     top: 65px;
 }
+.btn-createLanguage {
+    width: 300px;
+    background-color: #016E6E;
+}
+.btn-createLanguage:hover {
+    background-color: #70B6B6;
+    color: #016E6E;
+}
