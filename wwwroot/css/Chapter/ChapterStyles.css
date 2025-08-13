@@ -13,3 +13,27 @@ textarea {
     height: 80px;
     max-height: 200px;
 }
+.chapterContainer {
+    width: 100%;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+.chapterNameContainer {
+    width: 50%;
+    border: 5px solid white;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-collapse: collapse;
+    border-bottom-right-radius: 20px;
+    background-color: #70B6B6;
+}
+.chapterOpenContainer{
+    display: flex;
+    justify-content: center;
+}
+.chapterOpen{
+    width: 300px;
+}
+.chaptersContainer{
+    margin-bottom: 10vh;
+}

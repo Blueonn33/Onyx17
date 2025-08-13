@@ -17,8 +17,12 @@
             @foreach(var language in Model)
             {
                 <div class="language" id="language-@language.Id">
-                    <a onclick="deleteLanguage(@language.Id)"><img src="~/Images/trash-can.png" class="trash" /></a>
-                    <a asp-action="Edit" asp-controller="Documentation" asp-route-languageId="@language.Id"><img src="~/Images/pen.png" class="pen" /></a>
+                    <div class="trashContainer">
+                        <a onclick="deleteLanguage(@language.Id)"><img src="~/Images/trash-can.png" class="trash" /></a>
+                    </div>
+                    <div class="penContainer">
+                        <a asp-action="Edit" asp-controller="Documentation" asp-route-languageId="@language.Id"><img src="~/Images/pen.png" class="pen" /></a>
+                    </div>
                     <div class="languageImageContainer p-3 mt-3">
                         @if (language.ImageData != null)
                         {

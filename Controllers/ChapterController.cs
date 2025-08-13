@@ -103,6 +103,7 @@ namespace Onyx17.Controllers
                 return NotFound();
             }
 
+            ViewBag.ChapterId = chapterId;
             return File(chapter.PdfFileData, chapter.PdfMimeType);
         }
 

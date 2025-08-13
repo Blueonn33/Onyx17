@@ -30,33 +30,28 @@ namespace Onyx17.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(LanguageViewModel model)
         {
-            if(ModelState.IsValid)
+            if (model.ImageFile != null && model.ImageFile.Length > 0)
             {
-                byte[]? imageData = null;
-                string? mimeType = null;
-
-                if (model.ImageFile != null && model.ImageFile.Length > 0)
+                using (var ms = new MemoryStream())
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        await model.ImageFile.CopyToAsync(ms);
-                        imageData = ms.ToArray();
-                        mimeType = model.ImageFile.ContentType;
-                    }
+                    await model.ImageFile.CopyToAsync(ms);
+                    model.ImageData = ms.ToArray();
+                    model.ImageMimeType = model.ImageFile.ContentType;
                 }
-
-                var language = new Language
-                {
-                    Name = model.Name,
-                    ImageData = imageData,
-                    ImageMimeType = mimeType
-                };
-
-                await _repository.CreateLanguageAsync(language);
             }
+
+            var language = new Language
+            {
+                Name = model.Name,
+                ImageData = model.ImageData,
+                ImageMimeType = model.ImageMimeType
+            };
+
+            await _repository.CreateLanguageAsync(language);
 
             return RedirectToAction("Index");
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Edit(int languageId)

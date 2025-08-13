@@ -12,7 +12,7 @@ namespace Onyx17.Data.EntityConfigurations
 
             builder.HasKey(c => c.Id);
             builder.Property(c => c.Name).IsRequired().HasMaxLength(100);
-            builder.Property(c => c.Description).IsRequired().HasMaxLength(300);
+            builder.Property(c => c.Description).IsRequired().HasMaxLength(700);
             builder.Property(c => c.PdfFileData).IsRequired();
 
             builder.HasOne(c => c.Language)

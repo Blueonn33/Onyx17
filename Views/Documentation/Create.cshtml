@@ -10,7 +10,7 @@
 <body>
     <div class="container mt-5">
         <h1 class="fs-1 text-light mb-5">Създаване на документация</h1>
-        <form method="post" asp-action="Create" enctype="multipart/form-data" class="documentationForm">
+        <form method="post" asp-action="Create" asp-controller="Documentation" enctype="multipart/form-data" class="documentationForm">
             <div class="mb-4">
                 <label asp-for="ImageFile" class="form-label fs-3 text-light">Изображение</label>
                 <input asp-for="ImageFile" class="form-control" type="file" />
