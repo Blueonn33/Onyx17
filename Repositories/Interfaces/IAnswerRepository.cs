@@ -1,0 +1,13 @@
+﻿using Onyx17.Models;
+
+namespace Onyx17.Repositories.Interfaces
+{
+    public interface IAnswerRepository
+    {
+        public Task<IEnumerable<Answer>> GetAllAnswersByQuestionIdAsync(int questionId);
+        public Task<Answer?> GetAnswerByIdAsync(int answerId);
+        public Task CreateAnswerAsync(Answer answer);
+        public Task UpdateAnswerAsync(Answer answer);
+        public Task DeleteAnswerAsync(int answerId);
+    }
+}

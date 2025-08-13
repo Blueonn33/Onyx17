@@ -24,6 +24,8 @@ public class Program
 
         builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
         builder.Services.AddScoped<IChapterRepository, ChapterRepository>();
+        builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
+        builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
 
         var app = builder.Build();
 

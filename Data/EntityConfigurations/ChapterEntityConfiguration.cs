@@ -17,7 +17,8 @@ namespace Onyx17.Data.EntityConfigurations
 
             builder.HasOne(c => c.Language)
                  .WithMany(l => l.Chapters)
-                 .HasForeignKey(c => c.LanguageId);
+                 .HasForeignKey(c => c.LanguageId)
+                 .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
