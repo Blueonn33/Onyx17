@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Onyx17.Models;
 using Onyx17.Repositories.Interfaces;
+using Onyx17.ViewModels;
 
 namespace Onyx17.Controllers
 {
@@ -22,6 +24,20 @@ namespace Onyx17.Controllers
             return View(questions);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create(QuestionViewModel model)
+        {
+            string userId = _userManager.GetUserId(User);
 
+            var question = new Question
+            {
+                Text = model.Text,
+                CreationDate = DateTime.UtcNow,
+                UserId = userId
+            };
+
+            await _repository.CreateQuestionAsync(question);
+            return RedirectToAction("Index");
+        }
     }
 }
