@@ -23,10 +23,12 @@
     display: grid;
     grid-template-columns: 3fr 1fr;
 }
-.questionTextContainer{
+.questionTextContainer {
     background-color: #1a1a1a;
     padding: 10px;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
 }
 .questionHr {
     height: 10px;
@@ -50,15 +52,33 @@
 .modal-body, .modal-footer {
     background-color: #016E6E;
 }
+
 /* Answers */
-/*.questionContentContainer {
+.answerForm {
+    width: 67.5%;
+}
+.answerInput {
+    border: none;
+    border-right: 10px solid #016E6E;
+    border-radius: 10px;
+    height: 45px;
+}
+.answerTextContainer {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 8px;
+    border-radius: 10px;
+    color: red !important;
+}
+.answerContentContainer {
     display: grid;
     grid-template-columns: 3fr 1fr;
 }
-.questionReaction {
-    width: 60px;
+.answerReaction {
+    width: 40px;
 }
-.questionReaction:hover{
+.answerReaction:hover{
     opacity: 0.7;
     cursor: pointer;
-}*/
+}
