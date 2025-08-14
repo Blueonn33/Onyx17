@@ -49,7 +49,9 @@ namespace Onyx17.Repositories
                 throw new ArgumentException("Въпросът не може да бъде с ID = 0.", nameof(questionId));
             }
 
-            var question = await _context.Questions.FindAsync(questionId);
+            var question = await _context.Questions
+               .Include(q => q.Answers)
+               .FirstOrDefaultAsync(q => q.Id == questionId);
 
             if (question == null)
             {
@@ -57,6 +59,7 @@ namespace Onyx17.Repositories
             }
                 
             _context.Questions.Remove(question);
+            _context.Answers.RemoveRange(question.Answers);
             await _context.SaveChangesAsync();
         }
 

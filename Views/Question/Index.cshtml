@@ -123,21 +123,21 @@
             document.getElementById(id).src="@Url.Content("~/Images/edit.png")";
         }
 
-        function deleteQuestion(id)
-        {
-            if(confirm("Изтриване"))
-            {
+        function deleteQuestion(id) {
+            if(confirm("Изтриване")) {
                 $.ajax({
-                    url: "@Url.Action("Delete", "Question")?questionId=" + id,
+                    url: "@Url.Action("Delete", "Question")",
                     type: "DELETE",
+                    data: { questionId: id },
                     success: function() {
                         $("#question-" + id).remove();
                     },
-                    error: function() {
-                        alert("Не стана");
+                    error: function(err) {
+                        alert("Не стана: " + err.responseText);
                     }
                 });
             }
         }
+
     </script>
 }
