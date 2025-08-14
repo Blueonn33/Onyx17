@@ -9,24 +9,6 @@
     border-radius: 10px;
     background-color: #016E6E;
 }
-.btn-submit {
-    background-color: #016E6E;
-    font-size: 22px;
-    outline: 6px solid white;
-    color: white;
-}
-.btn-submit:hover {
-    background-color: #70B6B6;
-    color: #016E6E;
-}
-.btn-back {
-    outline: 6px solid #016E6E;
-    background-color: white;
-    font-size: 22px;
-}
-.btn-back:hover {
-    background-color: #a1a1a1;
-}
 input{
     height: 50px;
     font-size: 25px !important;

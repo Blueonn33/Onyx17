@@ -27,6 +27,8 @@ public class Program
         builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
         builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
         builder.Services.AddScoped<IReactionRepository, ReactionRepository>();
+        builder.Services.AddScoped<IQuizRepository, QuizRepository>();
+        builder.Services.AddScoped<IQuizQuestionRepository, QuizQuestionRepository>();
 
         var app = builder.Build();
 

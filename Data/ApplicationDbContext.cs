@@ -18,6 +18,8 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Question> Questions { get; set; }
     public DbSet<Answer> Answers { get; set; }
     public DbSet<Reaction> Reactions { get; set; }
+    public DbSet<Quiz> Quizzes { get; set; }
+    public DbSet<QuizQuestion> QuizQuestions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
