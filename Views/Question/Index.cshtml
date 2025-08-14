@@ -37,24 +37,24 @@
                                 </a>
                                 <a class="questionEdit"
                                    data-bs-toggle="modal"
-                                   data-bs-target="#exampleModal"
+                                   data-bs-target="#questionModal-@question.Id"
                                    onmouseover="openEdit('edit-@question.Id')"
                                    onmouseout="closeEdit('edit-@question.Id')">
                                     <img src="~/Images/edit.png" class="questionOptions ms-3" id="edit-@question.Id" />
                                 </a>
                             </div>
                         </div>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="questionModal-@question.Id" tabindex="-1" aria-labelledby="questionModalLabel-@question.Id" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Редактирай въпроса</h1>
+                                        <h1 class="modal-title fs-5" id="questionModalLabel-@question.Id">Редактирай въпроса</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form method="post" asp-action="Edit" asp-controller="Question" 
                                         asp-route-questionId="@question.Id">
                                         <div class="modal-body">
-                                            <input class="form-control questionInput" name="Text" />
+                                            <input class="form-control questionInput" name="Text" value="@question.Text"/>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Назад</button>
@@ -63,12 +63,11 @@
                                             </button>
                                         </div>
                                     </form>
-                                
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <form method="post" asp-action="AddAnswer" asp-route-questionId="@question.Id" 
+                    <form method="post" asp-action="AddAnswer" asp-controller="Answer" asp-route-questionId="@question.Id" 
                         class="mt-3 mx-5 answerForm">
                         <div class="input-group mb-3">
                             <input type="text" name="text" class="form-control answerInput" placeholder="Добави отговор..." />
@@ -83,10 +82,45 @@
                                 <div class="answerContentContainer">
                                     <div class="answerTextContainer mx-5 mb-4">
                                         <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
+                                        <a class="answerOption" 
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#answerModal-@answer.Id">
+                                            <img src="~/Images/option.png" class="answerOptionImage" />
+                                        </a>
                                     </div>
                                     <div class="answerReactionsContainer">
-                                        <img src="~/Images/like.png" class="me-3 answerReaction" />
-                                        <img src="~/Images/unlike.png" class="answerReaction" />
+                                        <img src="~/Images/like.png" class="me-2 answerReaction"
+                                             onclick="increment('answerLike-@answer.Id')" />
+                                        <span class="text-light me-3 fs-5 fw-bold" id="answerLike-@answer.Id">0</span>
+                                        <img src="~/Images/unlike.png" class="me-2 answerReaction"
+                                             onclick="increment('answerDislike-@answer.Id')" />
+                                        <span class="text-light me-3 fs-5 fw-bold" id="answerDislike-@answer.Id">0</span>
+                                    </div>
+                                </div>
+                                <div class="modal fade answerModal" id="answerModal-@answer.Id" tabindex="-1" aria-labelledby="answerModalLabel-@answer.Id" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="answerModalLabel-@answer.Id">Редактирай отговора</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form method="post" asp-action="Edit" asp-controller="Answer"
+                                                   class="formEditAnswer">
+                                                <input type="hidden" name="answerId" value="@answer.Id" />
+                                                <div class="modal-body">
+                                                    <input class="form-control answerEditInput" name="Text" value="@answer.Text" />
+                                                </div>
+                                                <div class="modal-footer answer pb-5">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Назад</button>
+                                                    <button type="submit" class="btn btn-light">
+                                                        Запази
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <div class="answerDeleteContainer">
+                                                <a class="text-light answerDelete fs-5">Изтрий отговора</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             }
@@ -139,5 +173,9 @@
             }
         }
 
+        function increment(id)
+        {
+            document.getElementById(id).innerHTML = arguments[0].innerHTML == "0" ? "1" : parseInt(document.getElementById(id).innerHTML) + 1;
+        }
     </script>
 }
