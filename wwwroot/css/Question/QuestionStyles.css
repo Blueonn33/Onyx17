@@ -4,7 +4,14 @@
     background: linear-gradient(45deg, #42AFAF, #000) !important;
     background-size: 100% 100%;
 }
-.questionsContainer{
+.btn-forum {
+    background-color: #007C7C;
+}
+.btn-forum:hover {
+    background-color: #70B6B6;
+    color: #016E6E;
+}
+.questionsContainer {
     margin-bottom: 10vh;
 }
 .questionsForm {
