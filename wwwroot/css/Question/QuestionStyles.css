@@ -4,8 +4,10 @@
     background: linear-gradient(45deg, #42AFAF, #000) !important;
     background-size: 100% 100%;
 }
-.questionsForm
-{
+.questionsContainer{
+    margin-bottom: 10vh;
+}
+.questionsForm {
     display: grid;
     grid-template-columns: 3fr 1fr;
 }
@@ -32,6 +34,21 @@
     opacity: 1;
     border-radius: 13px;
     border: none;
+}
+.questionOptions{
+    width: 50px;
+}
+.questionTrash, .questionEdit:hover {
+    cursor: pointer;
+}
+.questionOptionsContainer {
+    border: 3px solid white;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px;
+}
+.modal-body, .modal-footer {
+    background-color: #016E6E;
 }
 /* Answers */
 /*.questionContentContainer {
