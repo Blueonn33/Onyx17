@@ -9,17 +9,12 @@ namespace Onyx17.Controllers
     public class QuestionController : Controller
     {
         private readonly IQuestionRepository _repository;
-        private readonly IAnswerRepository _answerRepository;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly IReactionRepository _reactionRepository;
 
-        public QuestionController(IQuestionRepository repository, IAnswerRepository answerRepository ,
-            UserManager<IdentityUser> userManager, IReactionRepository reactionRepository)
+        public QuestionController(IQuestionRepository repository, UserManager<IdentityUser> userManager)
         {
             _repository = repository;
-            _answerRepository = answerRepository;
             _userManager = userManager;
-            _reactionRepository = reactionRepository;
         }
 
         [HttpGet]
@@ -78,34 +73,6 @@ namespace Onyx17.Controllers
             await _repository.DeleteQuestionAsync(questionId);
 
             return Ok();
-        }
-
-        [HttpPost] 
-        public async Task<IActionResult> AddReaction(int answerId, ReactionViewModel model)
-        {
-            string userId = _userManager.GetUserId(User);
-
-            if (answerId == 0)
-            {
-                return NotFound();
-            }
-
-            var answer = await _answerRepository.GetAnswerByIdAsync(answerId);
-
-            if (answer == null)
-            {
-                return NotFound();
-            }
-
-            var reaction = new Reaction
-            {
-                AnswerId = answerId,
-                Type = model.Type,
-                UserId = userId
-            };
-
-            await _reactionRepository.CreateReactionAsync(reaction);
-            return RedirectToAction("Index");
         }
     }
 }

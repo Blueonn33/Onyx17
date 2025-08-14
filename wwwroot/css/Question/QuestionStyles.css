@@ -112,3 +112,9 @@
 .formEditAnswer {
     background-color: #720e0e;
 }
+.buttonReaction {
+    border: none;
+    background-color: transparent;
+    width: 50px;
+    height: min-content;
+}

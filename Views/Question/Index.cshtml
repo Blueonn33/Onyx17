@@ -79,7 +79,7 @@
                         {
                             foreach (var answer in question.Answers)
                             {
-                                <div class="answerContentContainer">
+                                <div class="answerContentContainer" id="answer-@answer.Id">
                                     <div class="answerTextContainer mx-5 mb-4">
                                         <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
                                         <a class="answerOption" 
@@ -89,12 +89,21 @@
                                         </a>
                                     </div>
                                     <div class="answerReactionsContainer">
-                                        <img src="~/Images/like.png" class="me-2 answerReaction"
-                                             onclick="increment('answerLike-@answer.Id')" />
-                                        <span class="text-light me-3 fs-5 fw-bold" id="answerLike-@answer.Id">0</span>
-                                        <img src="~/Images/unlike.png" class="me-2 answerReaction"
-                                             onclick="increment('answerDislike-@answer.Id')" />
-                                        <span class="text-light me-3 fs-5 fw-bold" id="answerDislike-@answer.Id">0</span>
+                                        <form method="post" asp-action="Create" asp-controller="Reaction">
+                                            <input type="hidden" name="answerId" value="@answer.Id" />
+                                            <button type="submit" name="Type" value="Like" class="buttonReaction">
+                                                <img src="~/Images/like.png" class="me-2 answerReaction"/>
+                                            </button>
+                                            <span class="text-light me-3 fs-5 fw-bold" id="answerLike-@answer.Id">
+                                                @question.Answers.First(a => a.Id == answer.Id).Reactions.Count(r => r.Type == "Like")
+                                            </span>
+                                            <button type="submit" name="Type" value="Dislike" class="buttonReaction">
+                                                <img src="~/Images/unlike.png" class="me-2 answerReaction" />
+                                            </button>
+                                            <span class="text-light me-3 fs-5 fw-bold" id="answerDislike-@answer.Id">
+                                                @question.Answers.First(a => a.Id == answer.Id).Reactions.Count(r => r.Type == "Dislike")
+                                            </span>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="modal fade answerModal" id="answerModal-@answer.Id" tabindex="-1" aria-labelledby="answerModalLabel-@answer.Id" aria-hidden="true">
@@ -118,7 +127,10 @@
                                                 </div>
                                             </form>
                                             <div class="answerDeleteContainer">
-                                                <a class="text-light answerDelete fs-5">Изтрий отговора</a>
+                                                <a class="text-light answerDelete fs-5" 
+                                                    onclick="deleteAnswer(@answer.Id)">
+                                                    Изтрий отговора
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -171,6 +183,21 @@
                     }
                 });
             }
+        }
+
+        function deleteAnswer(id) {
+            $.ajax({
+                    url: "@Url.Action("Delete", "Answer")",
+                    type: "DELETE",
+                    data: { answerId: id },
+                    success: function() {
+                        $("#answer-" + id).remove();
+                        window.location.reload();
+                    },
+                    error: function(err) {
+                        window.location.reload();
+                    }
+            });
         }
 
         function increment(id)
