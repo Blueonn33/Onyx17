@@ -19,6 +19,11 @@ namespace Onyx17.Data.EntityConfigurations
                 .WithMany(q => q.Answers)
                 .HasForeignKey(a => a.QuestionId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(a => a.Reactions)
+                .WithOne(r => r.Answer)
+                .HasForeignKey(r => r.AnswerId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

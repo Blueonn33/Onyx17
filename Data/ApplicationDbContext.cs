@@ -17,6 +17,7 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Chapter> Chapters { get; set; }
     public DbSet<Question> Questions { get; set; }
     public DbSet<Answer> Answers { get; set; }
+    public DbSet<Reaction> Reactions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -26,6 +27,7 @@ public class ApplicationDbContext : IdentityDbContext
         builder.ApplyConfiguration(new ChapterEntityConfiguration());
         builder.ApplyConfiguration(new QuestionEntityConfiguration());
         builder.ApplyConfiguration(new AnswerEntityConfiguration());
+        builder.ApplyConfiguration(new ReactionEntityConfiguration());
 
         builder.Entity<Answer>()
             .HasOne(a => a.Question)

@@ -26,6 +26,7 @@ public class Program
         builder.Services.AddScoped<IChapterRepository, ChapterRepository>();
         builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
         builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
+        builder.Services.AddScoped<IReactionRepository, ReactionRepository>();
 
         var app = builder.Build();
 

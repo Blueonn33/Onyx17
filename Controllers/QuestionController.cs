@@ -11,13 +11,15 @@ namespace Onyx17.Controllers
         private readonly IQuestionRepository _repository;
         private readonly IAnswerRepository _answerRepository;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IReactionRepository _reactionRepository;
 
         public QuestionController(IQuestionRepository repository, IAnswerRepository answerRepository ,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager, IReactionRepository reactionRepository)
         {
             _repository = repository;
             _answerRepository = answerRepository;
             _userManager = userManager;
+            _reactionRepository = reactionRepository;
         }
 
         [HttpGet]
@@ -64,7 +66,6 @@ namespace Onyx17.Controllers
             return RedirectToAction("Index");
         }
 
-
         [HttpDelete]
         public async Task<IActionResult> Delete(int questionId)
         {
@@ -79,29 +80,31 @@ namespace Onyx17.Controllers
             return Ok();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddAnswer(int questionId, AnswerViewModel model)
+        [HttpPost] 
+        public async Task<IActionResult> AddReaction(int answerId, ReactionViewModel model)
         {
             string userId = _userManager.GetUserId(User);
 
-            if (questionId == 0)
+            if (answerId == 0)
             {
                 return NotFound();
             }
-            if (string.IsNullOrWhiteSpace(model.Text))
+
+            var answer = await _answerRepository.GetAnswerByIdAsync(answerId);
+
+            if (answer == null)
             {
-                return RedirectToAction("Index");
+                return NotFound();
             }
 
-            var answer = new Answer
+            var reaction = new Reaction
             {
-                QuestionId = questionId,
-                Text = model.Text,
-                CreationDate = DateTime.UtcNow,
-                UserId = userId,
+                AnswerId = answerId,
+                Type = model.Type,
+                UserId = userId
             };
 
-            await _answerRepository.CreateAnswerAsync(answer);
+            await _reactionRepository.CreateReactionAsync(reaction);
             return RedirectToAction("Index");
         }
     }
