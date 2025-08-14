@@ -14,6 +14,11 @@ namespace Onyx17.Data.EntityConfigurations
             builder.Property(a => a.Text).IsRequired().HasMaxLength(1000);
             builder.Property(a => a.CreationDate);
             builder.Property(a => a.UserId).IsRequired();
+
+            builder.HasOne(a => a.Question)
+                .WithMany(q => q.Answers)
+                .HasForeignKey(a => a.QuestionId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

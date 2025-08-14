@@ -17,7 +17,7 @@ namespace Onyx17.Repositories
 
         public async Task<IEnumerable<Question>> GetAllQuestionsAsync()
         {
-            return await _context.Questions.ToListAsync();
+            return await _context.Questions.Include(q => q.Answers).ToListAsync(); ;
         }
 
         public async Task<Question?> GetQuestionByIdAsync(int questionId)

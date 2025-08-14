@@ -14,5 +14,6 @@ namespace Onyx17.Models
         public IdentityUser User { get; set; }
 
         public ICollection<Answer> Answers { get; set; }
+        //public List<Answer> Answers { get; set; } = new List<Answer>();
     }
 }
