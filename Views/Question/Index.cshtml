@@ -15,7 +15,7 @@
                 <input type="text" name="Text" class="form-control questionInput" />
             </div>
             <div class="questionSubmitButton">
-                <button type="submit" class="btn btn-lg btn-light">Изпрати</button>
+                <button type="submit" class="btn btn-lg btn-forum">Изпрати</button>
             </div>
         </form>
         <div class="questionsList">
@@ -71,7 +71,7 @@
                         class="mt-3 mx-5 answerForm">
                         <div class="input-group mb-3">
                             <input type="text" name="text" class="form-control answerInput" placeholder="Добави отговор..." />
-                            <button type="submit" class="btn btn-light answerSend">Изпрати</button>
+                            <button type="submit" class="btn btn-forum answerSend">Изпрати</button>
                         </div>
                     </form>
                     <div class="answersList">
@@ -198,11 +198,6 @@
                         window.location.reload();
                     }
             });
-        }
-
-        function increment(id)
-        {
-            document.getElementById(id).innerHTML = arguments[0].innerHTML == "0" ? "1" : parseInt(document.getElementById(id).innerHTML) + 1;
         }
     </script>
 }
