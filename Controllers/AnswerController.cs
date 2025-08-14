@@ -61,5 +61,23 @@ namespace Onyx17.Controllers
             await _answerRepository.UpdateAnswerAsync(answer);
             return RedirectToAction("Index", "Question");
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int answerId)
+        {
+            if (answerId == 0)
+            {
+                return NotFound();
+            }
+
+            var answer = await _answerRepository.GetAnswerByIdAsync(answerId);
+            if (answer == null)
+            {
+                return NotFound();
+            }
+
+            await _answerRepository.DeleteAnswerAsync(answerId);
+            return RedirectToAction("Index", "Question");
+        }
     }
 }

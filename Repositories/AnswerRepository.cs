@@ -22,7 +22,9 @@ namespace Onyx17.Repositories
                 throw new ArgumentException("Въпросът не може да бъде с ID = 0.", nameof(questionId));
             }
 
-            var answers = await _context.Answers.Where(a => a.QuestionId == questionId).ToListAsync();
+            var answers = await _context.Answers
+                .Where(a => a.QuestionId == questionId)
+                .ToListAsync();
             return answers;
         }
 

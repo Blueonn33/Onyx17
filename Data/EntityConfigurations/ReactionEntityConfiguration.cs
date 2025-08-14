@@ -15,6 +15,11 @@ namespace Onyx17.Data.EntityConfigurations
             builder.Property(r => r.AnswerId).IsRequired();
             builder.Property(r => r.UserId).IsRequired();
 
+            builder.HasOne(r => r.User)
+                .WithMany()
+                .HasForeignKey(r => r.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasOne(r => r.Answer)
                 .WithMany(a => a.Reactions)
                 .HasForeignKey(r => r.AnswerId)
