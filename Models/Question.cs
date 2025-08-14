@@ -13,7 +13,7 @@ namespace Onyx17.Models
         public string UserId { get; set; }
         public IdentityUser User { get; set; }
 
-        //public ICollection<Answer> Answers { get; set; }
-        public List<Answer> Answers { get; set; } = new List<Answer>();
+        public ICollection<Answer> Answers { get; set; }
+        //public List<Answer> Answers { get; set; } = new List<Answer>();
     }
 }

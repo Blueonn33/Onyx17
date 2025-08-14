@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Onyx17.Data.EntityConfigurations;
 using Onyx17.Models;
+using System.Reflection.Emit;
 
 namespace Onyx17.Data;
 
@@ -25,5 +26,16 @@ public class ApplicationDbContext : IdentityDbContext
         builder.ApplyConfiguration(new ChapterEntityConfiguration());
         builder.ApplyConfiguration(new QuestionEntityConfiguration());
         builder.ApplyConfiguration(new AnswerEntityConfiguration());
+
+        builder.Entity<Answer>()
+            .HasOne(a => a.Question)
+            .WithMany(q => q.Answers)
+            .HasForeignKey(a => a.QuestionId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<Answer>()
+            .HasOne(a => a.Question)
+            .WithMany(q => q.Answers)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

@@ -21,81 +21,83 @@
         <div class="questionsList">
             @foreach (var question in Model)
             {
-                <div class="mt-5 questionContentContainer" id="question-@question.Id">
-                    <div class="questionTextContainer me-5">
-                        <p class="ps-3 fs-4 text-light mb-0 questionText">@question.Text</p>
-                    </div>
-                    <div>
-                        @* <button class="btn btn-lg btn-light">Отговор</button> *@
-                        <div class="questionOptionsContainer ms-5">
-                            <a class="questionTrash"
-                               onclick="deleteQuestion(@question.Id)"
-                               onmouseover="openTrash('trash-@question.Id')"
-                               onmouseout="closeTrash('trash-@question.Id')">
-                                <img src="~/Images/trash-can.png" class="questionOptions" id="trash-@question.Id" />
-                            </a>
-                            <a class="questionEdit"
-                               data-bs-toggle="modal"
-                               data-bs-target="#exampleModal"
-                               onmouseover="openEdit('edit-@question.Id')"
-                               onmouseout="closeEdit('edit-@question.Id')">
-                                <img src="~/Images/edit.png" class="questionOptions ms-3" id="edit-@question.Id" />
-                            </a>
+                <div id="question-@question.Id">
+                    <div class="mt-5 questionContentContainer" >
+                        <div class="questionTextContainer me-5">
+                            <p class="ps-3 fs-4 text-light mb-0 questionText">@question.Text</p>
                         </div>
-                    </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Редактирай въпроса</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <form method="post" asp-action="Edit" asp-controller="Question" 
-                                    asp-route-questionId="@question.Id">
-                                    <div class="modal-body">
-                                        <input class="form-control questionInput" name="Text" />
+                        <div>
+                            @* <button class="btn btn-lg btn-light">Отговор</button> *@
+                            <div class="questionOptionsContainer ms-5">
+                                <a class="questionTrash"
+                                   onclick="deleteQuestion(@question.Id)"
+                                   onmouseover="openTrash('trash-@question.Id')"
+                                   onmouseout="closeTrash('trash-@question.Id')">
+                                    <img src="~/Images/trash-can.png" class="questionOptions" id="trash-@question.Id" />
+                                </a>
+                                <a class="questionEdit"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#exampleModal"
+                                   onmouseover="openEdit('edit-@question.Id')"
+                                   onmouseout="closeEdit('edit-@question.Id')">
+                                    <img src="~/Images/edit.png" class="questionOptions ms-3" id="edit-@question.Id" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Редактирай въпроса</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Назад</button>
-                                        <button type="submit" class="btn btn-light">
-                                            Запази
-                                        </button>
-                                    </div>
-                                </form>
+                                    <form method="post" asp-action="Edit" asp-controller="Question" 
+                                        asp-route-questionId="@question.Id">
+                                        <div class="modal-body">
+                                            <input class="form-control questionInput" name="Text" />
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Назад</button>
+                                            <button type="submit" class="btn btn-light">
+                                                Запази
+                                            </button>
+                                        </div>
+                                    </form>
                                 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <form method="post" asp-action="AddAnswer" asp-route-questionId="@question.Id" 
-                    class="mt-3 mx-5 answerForm">
-                    <div class="input-group mb-3">
-                        <input type="text" name="text" class="form-control answerInput" placeholder="Добави отговор..." />
-                        <button type="submit" class="btn btn-light answerSend">Изпрати</button>
-                    </div>
-                </form>
-                <div class="answersList">
-                    @if (question.Answers != null && question.Answers.Any())
-                    {
-                        foreach (var answer in question.Answers)
+                    <form method="post" asp-action="AddAnswer" asp-route-questionId="@question.Id" 
+                        class="mt-3 mx-5 answerForm">
+                        <div class="input-group mb-3">
+                            <input type="text" name="text" class="form-control answerInput" placeholder="Добави отговор..." />
+                            <button type="submit" class="btn btn-light answerSend">Изпрати</button>
+                        </div>
+                    </form>
+                    <div class="answersList">
+                        @if (question.Answers != null && question.Answers.Any())
                         {
-                            <div class="answerContentContainer">
-                                <div class="answerTextContainer mx-5 mb-4">
-                                    <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
+                            foreach (var answer in question.Answers)
+                            {
+                                <div class="answerContentContainer">
+                                    <div class="answerTextContainer mx-5 mb-4">
+                                        <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
+                                    </div>
+                                    <div class="answerReactionsContainer">
+                                        <img src="~/Images/like.png" class="me-3 answerReaction" />
+                                        <img src="~/Images/unlike.png" class="answerReaction" />
+                                    </div>
                                 </div>
-                                <div class="answerReactionsContainer">
-                                    <img src="~/Images/like.png" class="me-3 answerReaction" />
-                                    <img src="~/Images/unlike.png" class="answerReaction" />
-                                </div>
-                            </div>
+                            }
                         }
-                    }
-                    else
-                    {
-                        <p class="answerText fs-4 mt-3">Няма отговори</p>
-                    }
+                        else
+                        {
+                            <p class="answerText fs-4 mt-3">Няма отговори</p>
+                        }
+                    </div>
+                    <hr class="questionHr container" />
                 </div>
-                <hr class="questionHr container" />
             }
         </div>
     </div>
