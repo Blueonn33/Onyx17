@@ -1,0 +1,28 @@
+﻿body {
+    margin: 0;
+    width: 100%;
+    background: linear-gradient(45deg, #42AFAF, #000) !important;
+    background-size: 100% 100%;
+}
+.quizzesContainer{
+    margin-bottom: 10vh;
+}
+.quizContentContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr auto;
+    border: 5px solid white;
+    border-radius: 10px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.quizImageContainer {
+    z-index: -1;
+    border-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: #1a1a1a;
+}
+.quizImage {
+    width: 50%;
+    height: auto;
+}

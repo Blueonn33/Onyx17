@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Question>
 @{
-    ViewData["Title"] = "Въпроси";
+    ViewData["Title"] = "Форум";
 }
 
 <head>
@@ -27,7 +27,6 @@
                             <p class="ps-3 fs-4 text-light mb-0 questionText">@question.Text</p>
                         </div>
                         <div>
-                            @* <button class="btn btn-lg btn-light">Отговор</button> *@
                             <div class="questionOptionsContainer ms-5">
                                 <a class="questionTrash"
                                    onclick="deleteQuestion(@question.Id)"

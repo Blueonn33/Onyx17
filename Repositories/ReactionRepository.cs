@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Onyx17.Data;
 using Onyx17.Models;
 using Onyx17.Repositories.Interfaces;
@@ -46,8 +47,14 @@ namespace Onyx17.Repositories
                 throw new ArgumentNullException(nameof(reaction), "Реакцията не може да бъде null.");
             }
 
-            await _context.Reactions.AddAsync(reaction);
-            await _context.SaveChangesAsync();
+            var existingReaction = await _context.Reactions
+                .FirstOrDefaultAsync(r => r.AnswerId == reaction.AnswerId && r.UserId == reaction.UserId);
+
+            if (existingReaction == null)
+            {
+                await _context.Reactions.AddAsync(reaction);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
