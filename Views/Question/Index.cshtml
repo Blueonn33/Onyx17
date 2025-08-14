@@ -11,7 +11,7 @@
     <div class="questionsContainer mt-5">
         <form methor="post" asp-action="Create" class="questionsForm">
             <div class="me-5">
-                <label for="Text" class="form-label fs-3 text-light mb-3">Задай въпрос</label>
+                <label for="Text" class="form-label fs-2 text-light mb-3">Задай въпрос</label>
                 <input type="text" name="Text" class="form-control questionInput" />
             </div>
             <div class="questionSubmitButton">
@@ -21,20 +21,99 @@
         <div class="questionsList">
             @foreach (var question in Model)
             {
-                <div class="mt-5 questionContentContainer">
+                <div class="mt-5 questionContentContainer" id="question-@question.Id">
                     <div class="questionTextContainer me-5">
                         <p class="ps-3 fs-4 text-light">@question.Text</p>
                     </div>
-                    <div class="questionAnswerButton">
+                    <div>
                         <button class="btn btn-lg btn-light">Отговор</button>
+                        <div class="questionOptionsContainer ms-5">
+                            <a class="questionTrash"
+                               onclick="deleteQuestion(@question.Id)"
+                               onmouseover="openTrash('trash-@question.Id')"
+                               onmouseout="closeTrash('trash-@question.Id')">
+                                <img src="~/Images/trash-can.png" class="questionOptions" id="trash-@question.Id" />
+                            </a>
+                            <a class="questionEdit"
+                               data-bs-toggle="modal"
+                               data-bs-target="#exampleModal"
+                               onmouseover="openEdit('edit-@question.Id')"
+                               onmouseout="closeEdit('edit-@question.Id')">
+                                <img src="~/Images/edit.png" class="questionOptions ms-3" id="edit-@question.Id" />
+                            </a>
+                        </div>
+                        
+                    </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Редактирай въпроса</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form method="post" asp-action="Edit" asp-controller="Question" 
+                                    asp-route-questionId="@question.Id">
+                                    <div class="modal-body">
+                                        <input class="form-control questionInput" name="Text" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Назад</button>
+                                        <button type="submit" class="btn btn-light">
+                                            Запази
+                                        </button>
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
                     </div>
                     @* <div class="questionReactionsContainer"> *@
                     @*     <img src="~/Images/like.png" class="me-3 questionReaction"/> *@
                     @*     <img src="~/Images/unlike.png" class="questionReaction" /> *@
                     @* </div> *@
+                    <hr class="questionHr" />
                 </div>
-                <hr class="questionHr"/>
+                
             }
         </div>
     </div>
 </body>
+
+@section Scripts{
+    <script>
+        function openTrash(id)
+        {
+            document.getElementById(id).src="@Url.Content("~/Images/recycle-bin.png")";
+        }
+        function closeTrash(id)
+        {
+            document.getElementById(id).src="@Url.Content("~/Images/trash-can.png")";
+        }
+
+        function openEdit(id)
+        {
+            document.getElementById(id).src="@Url.Content("~/Images/edit-text.png")";
+        }
+        function closeEdit(id)
+        {
+            document.getElementById(id).src="@Url.Content("~/Images/edit.png")";
+        }
+
+        function deleteQuestion(id)
+        {
+            if(confirm("Изтриване"))
+            {
+                $.ajax({
+                    url: "@Url.Action("Delete", "Question")?questionId=" + id,
+                    type: "DELETE",
+                    success: function() {
+                        $("#question-" + id).remove();
+                    },
+                    error: function() {
+                        alert("Не стана");
+                    }
+                });
+            }
+        }
+    </script>
+}

@@ -39,5 +39,41 @@ namespace Onyx17.Controllers
             await _repository.CreateQuestionAsync(question);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int questionId, QuestionViewModel model)
+        {
+            if(questionId == 0)
+            {
+                return NotFound();
+            }
+
+            var question = await _repository.GetQuestionByIdAsync(questionId);
+
+            if (question == null)
+            {
+                return NotFound();
+            }
+
+            question.Text = model.Text;
+            await _repository.UpdateQuestionAsync(question);
+
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int questionId)
+        {
+            if(questionId == 0)
+            {
+                return NotFound();
+            }
+
+            var question = await _repository.GetQuestionByIdAsync(questionId);
+            await _repository.DeleteQuestionAsync(questionId);
+
+            return Ok();
+        }
     }
 }
