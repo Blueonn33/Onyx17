@@ -5,8 +5,52 @@
 
 <head>
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/Quiz/QuizStyles.css" />
+    <link rel="stylesheet" href="~/css/QuizQuestion/QuizQuestionStyles.css" />
 </head>
 <body>
-    <h1 class="mt-5 text-light">Въпроси за теста</h1>
+    <h1 class="mt-5 mb-5 text-light">Въпроси за теста</h1>
+    <div class="quizQuestionsContainer">
+        <form method="post" asp-action="Create" asp-controller="QuizQuestion" asp-route-quizId="@ViewBag.quizId">
+            <div class="mb-3">
+                <label for="QuestionText" class="form-label fs-4 text-light">Въпрос:</label>
+                <input name="QuestionText" class="form-control" />
+            </div>
+            <div class="mb-3 gridGroup">
+                <label for="AnswerA" class="form-label fs-4 text-light">Отговор: A</label>
+                <input name="AnswerA" class="form-control" />
+            </div>
+            <div class="mb-3 gridGroup">
+                <label for="AnswerB" class="form-label fs-4 text-light">Отговор: B</label>
+                <input name="AnswerB" class="form-control" />
+            </div>
+            <div class="mb-3 gridGroup">
+                <label for="AnswerC" class="form-label fs-4 text-light">Отговор: C</label>
+                <input name="AnswerC" class="form-control" />
+            </div>
+            <div class="mb-3 gridGroup">
+                <label for="AnswerD" class="form-label fs-4 text-light">Отговор: D</label>
+                <input name="AnswerD" class="form-control" />
+            </div>
+            <div class="gridGroup">
+                <label for="CorrectAnswer" class="form-label fs-4 text-light">Верен отговор:</label>
+                <input name="CorrectAnswer" class="form-control"/>
+            </div>
+            <div class="quizQuestionButtonContainer mt-5">
+                <button type="submit" class="btn btn-lg btn-submit">Създай</button>
+            </div>
+        </form>
+        <div class="quizQuestionsContentContainer mt-5">
+            @foreach(var quizQuestion in Model)
+            {
+                <p>@quizQuestion.QuestionText</p>
+                <ul>
+                    <li>A: @quizQuestion.AnswerA</li>
+                    <li>B: @quizQuestion.AnswerB</li>
+                    <li>C: @quizQuestion.AnswerC</li>
+                    <li>D: @quizQuestion.AnswerD</li>
+                    <li>Верен отговор: @quizQuestion.CorrectAnswer</li>
+                </ul>
+            }
+        </div>
+    </div>
 </body>

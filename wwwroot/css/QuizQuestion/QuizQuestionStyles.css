@@ -1,0 +1,23 @@
+﻿body {
+    margin: 0;
+    width: 100%;
+    background: linear-gradient(45deg, #42AFAF, #000) !important;
+    background-size: 100% 100%;
+}
+.quizQuestionsContainer{
+    margin-bottom: 10vh;
+}
+.gridGroup {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.quizQuestionsContainer input {
+    font-size: 20px !important;
+}
+.quizQuestionButtonContainer{
+    display: flex;
+    justify-content: center;
+}
+.btn-submit {
+    width: 200px;
+}
