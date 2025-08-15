@@ -25,6 +25,7 @@ namespace Onyx17.Controllers
             }
 
             var quizQuestions = await _repository.GetAllQuizQuestionsByQuizIdAsync(quizId);
+            ViewBag.QuizId = quizId;
             return View(quizQuestions);
         }
 
@@ -37,7 +38,8 @@ namespace Onyx17.Controllers
             }
 
             var quizQuestion = new QuizQuestion
-            { 
+            {
+                QuestionText = model.QuestionText,
                 AnswerA = model.AnswerA,
                 AnswerB = model.AnswerB,
                 AnswerC = model.AnswerC,
@@ -47,7 +49,8 @@ namespace Onyx17.Controllers
             };
             
             await _repository.CreateQuizQuestionAsync(quizQuestion);
-            return RedirectToAction("Index", new { quizId });
+            ViewBag.QuizId = quizId;
+            return RedirectToAction("Index", "QuizQuestion", new { quizId = quizId });
         }
     }
 }
