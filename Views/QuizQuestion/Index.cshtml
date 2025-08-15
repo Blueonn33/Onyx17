@@ -42,14 +42,28 @@
         <div class="quizQuestionsContentContainer mt-5">
             @foreach(var quizQuestion in Model)
             {
-                <p>@quizQuestion.QuestionText</p>
-                <ul>
-                    <li>A: @quizQuestion.AnswerA</li>
-                    <li>B: @quizQuestion.AnswerB</li>
-                    <li>C: @quizQuestion.AnswerC</li>
-                    <li>D: @quizQuestion.AnswerD</li>
-                    <li>Верен отговор: @quizQuestion.CorrectAnswer</li>
-                </ul>
+                <div class="quizQuestionElement px-5 mb-5">
+                    <p class="questionText fs-3">@quizQuestion.QuestionText</p>
+                    <p class="questionAnswer text-light fs-5"><span class="questionLetter me-2">A:</span> 
+                        @quizQuestion.AnswerA
+                    </p>
+                    <p class="questionAnswer text-light fs-5">
+                        <span class="questionLetter me-2">B:</span>
+                        @quizQuestion.AnswerB
+                    </p>
+                    <p class="questionAnswer text-light fs-5">
+                        <span class="questionLetter me-2">C:</span>
+                        @quizQuestion.AnswerC
+                    </p>
+                    <p class="questionAnswer text-light fs-5">
+                        <span class="questionLetter me-2">D:</span>
+                        @quizQuestion.AnswerD
+                    </p>
+                    <p class="questionRightAnswer text-light fs-5">
+                        <span class="questionRightAnswerSpan">Верен отговор:</span>
+                        <strong>@quizQuestion.CorrectAnswer</strong>
+                    </p>
+                </div>
             }
         </div>
     </div>
