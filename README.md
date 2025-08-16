@@ -62,3 +62,12 @@
   - `Име на езика`
 <img width="1280" height="674" alt="image" src="https://github.com/user-attachments/assets/d941b8d5-ddfb-4acc-90fa-c34bcda7e735" />
 
+- Документацията се състои от раздели, като за всеки раздел има статия
+<img width="1280" height="674" alt="image" src="https://github.com/user-attachments/assets/b0beb8b9-33da-4661-98bb-6f0f94491983" />
+
+- За създаването на раздел се попълва следното:
+  - `Име на раздела`
+  - `Описание`
+  - `Статия (PDF файл)`
+<img width="1280" height="674" alt="image" src="https://github.com/user-attachments/assets/f29f1c49-1667-4955-b755-96c04496f6a5" />
+
