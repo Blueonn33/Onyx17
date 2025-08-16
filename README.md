@@ -26,7 +26,8 @@
   <img width="1271" height="67" alt="image" src="https://github.com/user-attachments/assets/8a43c79d-75f7-49b3-8e6a-a1981f385ff1" />
 
   - Навигация, ако потребителят не е регистриран
-  <img width="1273" height="68" alt="image" src="https://github.com/user-attachments/assets/c71d5bda-5d06-4074-a9dd-fd5104e4373c" />
+  <img width="1273" height="65" alt="image" src="https://github.com/user-attachments/assets/bd7d2cdd-2aab-4a1f-a5de-bbc422c3d60b" />
+
 
   
 
