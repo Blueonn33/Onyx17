@@ -98,5 +98,13 @@
   - `Верен отговор (Буква)`
 <img width="1271" height="674" alt="image" src="https://github.com/user-attachments/assets/3935631e-8d60-4726-b31a-551751b9eced" />
 
-
+## ⚙️ Използвани технологии
+- ASP.NET MVC
+- C#
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- Figma
+- Microsoft SQL Server Management Studio
 
