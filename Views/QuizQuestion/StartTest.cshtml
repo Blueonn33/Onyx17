@@ -1,0 +1,25 @@
+﻿@model IEnumerable<QuizQuestion>
+@{
+    ViewData["Title"] = "Започни теста";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/QuizQuestion/QuizQuestionStyles.css" />
+    <link rel="stylesheet" href="~/css/QuizQuestion/StartTestStyles.css" />
+</head>
+<body>
+    <div class="startQuizContainer">
+        @foreach (var quizQuestion in Model)
+        {
+            <div class="startQuizElement">
+                <h3>@quizQuestion.QuestionText</h3>
+                <button class="btn btn-lg btn-light">@quizQuestion.AnswerA</button>
+                <button class="btn btn-lg btn-light">@quizQuestion.AnswerB</button>
+                <button class="btn btn-lg btn-light">@quizQuestion.AnswerC</button>
+                <button class="btn btn-lg btn-light">@quizQuestion.AnswerD</button>
+            </div>
+            <a class="btn btn-lg btn-light">Следващ въпрос</a>
+        }
+    </div>
+</body>

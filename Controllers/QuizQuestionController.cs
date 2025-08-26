@@ -19,7 +19,7 @@ namespace Onyx17.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int quizId)
         {
-            if(quizId == 0)
+            if (quizId == 0)
             {
                 return RedirectToAction("Index", "Quiz");
             }
@@ -32,7 +32,7 @@ namespace Onyx17.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(int quizId, QuizQuestionViewModel model)
         {
-            if(quizId == 0)
+            if (quizId == 0)
             {
                 return RedirectToAction("Index", "Quiz");
             }
@@ -47,10 +47,30 @@ namespace Onyx17.Controllers
                 CorrectAnswer = model.CorrectAnswer,
                 QuizId = quizId,
             };
-            
+
             await _repository.CreateQuizQuestionAsync(quizQuestion);
             ViewBag.QuizId = quizId;
             return RedirectToAction("Index", "QuizQuestion", new { quizId = quizId });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> StartTest(int quizId)
+        {
+            if (quizId == 0)
+            {
+                return RedirectToAction("Index", "Quiz");
+            }
+
+            var quiz = await _quizRepository.GetQuizByIdAsync(quizId);
+
+            if (quiz == null)
+            {
+                return NotFound();
+            }
+
+            var quizQuestions = await _repository.GetAllQuizQuestionsByQuizIdAsync(quizId);
+            ViewBag.Quiz = quiz;
+            return View(quizQuestions);
         }
     }
 }

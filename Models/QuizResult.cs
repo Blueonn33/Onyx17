@@ -4,17 +4,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Onyx17.Models
 {
-    public class Question
+    public class QuizResult
     {
         public int Id { get; set; }
-        public string Text { get; set; }
-        public DateTime CreationDate { get; set; } = DateTime.Now;
+
+        [ForeignKey(nameof(QuizId))]
+        public int QuizId { get; set; }
+        public Quiz Quiz { get; set; }
 
         [ForeignKey(nameof(UserId))]
         public string UserId { get; set; }
         public User User { get; set; }
-
-        public ICollection<Answer> Answers { get; set; }
-        //public List<Answer> Answers { get; set; } = new List<Answer>();
+        
+        public int CorrectAnswers { get; set; }
+        public int TotalQuestions { get; set; }
+        public DateTime CompletionDate { get; set; } = DateTime.Now;
     }
 }

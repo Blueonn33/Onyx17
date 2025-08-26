@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Onyx17.Areas.Identity.Data
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,25 +18,28 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-black">
             <div class="container-fluid navContainer">
                 <a asp-controller ="Home" asp-action="Index">
-                    <img class="logo img-fluid" src="~/Images/Logo.png" /></a>
+                    <img class="logo img-fluid me-3" src="~/Images/Logo.png" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        <li class="nav-item me-3">
                             <a class="nav-link text-light fs-4" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-4" asp-area="" asp-controller="Documentation" asp-action="Index">Документация</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-4" asp-area="" asp-controller="Question" asp-action="Index">Форум</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-4" asp-area="" asp-controller="Quiz" asp-action="Index">Тестове</a>
-                        </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item me-3">
+                                <a class="nav-link text-light fs-4" asp-area="" asp-controller="Documentation" asp-action="Index">Документация</a>
+                            </li>
+                            <li class="nav-item me-3">
+                                <a class="nav-link text-light fs-4" asp-area="" asp-controller="Question" asp-action="Index">Форум</a>
+                            </li>
+                            <li class="nav-item me-3">
+                                <a class="nav-link text-light fs-4" asp-area="" asp-controller="Quiz" asp-action="Index">Тестове</a>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

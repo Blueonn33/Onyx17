@@ -42,6 +42,16 @@
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
+                    <input asp-for="Input.Name" class="form-control" aria-required="true" />
+                    <label asp-for="Input.Name">Име</label>
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea asp-for="Input.Description" class="form-control" aria-required="true"></textarea>
+                    <label asp-for="Input.Description">Описание</label>
+                    <span asp-validation-for="Input.Description" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                     <label asp-for="Input.Email">Имейл</label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
