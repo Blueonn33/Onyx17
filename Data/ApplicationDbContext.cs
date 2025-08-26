@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Onyx17.Areas.Identity.Data;
 using Onyx17.Data.EntityConfigurations;
 using Onyx17.Models;
 using System.Reflection.Emit;
 
 namespace Onyx17.Data;
 
-public class ApplicationDbContext : IdentityDbContext
+public class ApplicationDbContext : IdentityDbContext<User>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Onyx17.Areas.Identity.Data;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Onyx17.Models
@@ -11,7 +12,7 @@ namespace Onyx17.Models
 
         [ForeignKey(nameof(UserId))]
         public string UserId { get; set; }
-        public IdentityUser User { get; set; }
+        public User User { get; set; }
 
         [ForeignKey(nameof(QuestionId))]
         public int QuestionId { get; set; }
