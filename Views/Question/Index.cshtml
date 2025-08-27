@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="questionsContainer mt-5">
-        <form methor="post" asp-action="Create" class="questionsForm">
+        <form method="post" asp-action="Create" class="questionsForm">
             <div class="me-5">
                 <label for="Text" class="form-label fs-2 text-light mb-3">Задай въпрос</label>
                 <input type="text" name="Text" class="form-control questionInput" required/>
@@ -23,11 +23,20 @@
             {
                 <div id="question-@question.Id">
                     <div class="mt-5 questionContentContainer" >
-                        <div class="questionTextContainer me-5">
-                            <div class="questionUserNameContainer ms-3">
-                                <p class="text-light d-inline-block m-0 p-0">@question.User.Name</p>
+                        <div class="questionTextContainer me-5 row">
+                            <div class="col-2">
+                                @if (question.User?.ImageData != null && question.User?.ImageMimeType != null)
+                                {
+                                    <img src="data:@question.User.ImageMimeType;base64,@Convert.ToBase64String(question.User.ImageData)" 
+                                    class="questionUserImage img-fluid" />
+                                }
                             </div>
-                            <p class="ps-3 fs-4 text-light mb-0 questionText">@question.Text</p>
+                            <div class="col-10">
+                                <div class="questionUserNameContainer ms-3">
+                                    <p class="text-light d-inline-block m-0 p-0">@question.User?.Name</p>
+                                </div>
+                                <p class="ps-3 fs-4 text-light mb-0 questionText">@question.Text</p>
+                            </div>
                         </div>
                         <div>
                             <div class="questionOptionsContainer ms-5">
@@ -82,18 +91,28 @@
                             foreach (var answer in question.Answers)
                             {
                                 <div class="answerContentContainer" id="answer-@answer.Id">
-                                    <div class="answerTextContainer mx-5 mb-4">
-                                        <div class="answerUserNameContainer ms-3">
-                                            <p class="text-dark d-inline-block m-0 p-0">@answer.User.Name</p> 
+                                    <div class="answerTextContainer mx-5 mb-4 row">
+                                        <div class="col-2">
+                                            @if (answer.User?.ImageData != null && answer.User?.ImageMimeType != null)
+                                            {
+                                                <img src="data:@answer.User.ImageMimeType;base64,@Convert.ToBase64String(answer.User.ImageData)" 
+                                                class="questionUserImage img-fluid" />
+                                            }
                                         </div>
-                                        <div class="answerTextFlexContainer">
-                                            <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
-                                            <a class="answerOption"
-                                               data-bs-toggle="modal"
-                                               data-bs-target="#answerModal-@answer.Id">
-                                                <img src="~/Images/option.png" class="answerOptionImage" />
-                                            </a>
+                                        <div class="col-10">
+                                            <div class="answerUserNameContainer ms-3">
+                                                <p class="text-dark d-inline-block m-0 p-0">@answer.User?.Name</p>
+                                            </div>
+                                            <div class="answerTextFlexContainer">
+                                                <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
+                                                <a class="answerOption"
+                                                   data-bs-toggle="modal"
+                                                   data-bs-target="#answerModal-@answer.Id">
+                                                    <img src="~/Images/option.png" class="answerOptionImage" />
+                                                </a>
+                                            </div>
                                         </div>
+                                        
                                         
                                     </div>
                                     <div class="answerReactionsContainer">

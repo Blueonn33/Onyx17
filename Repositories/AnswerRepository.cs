@@ -24,8 +24,8 @@ namespace Onyx17.Repositories
 
             var answers = await _context.Answers
                 .Where(a => a.QuestionId == questionId)
-                .OrderByDescending(a => a.Reactions.Count(r => r.Type == "Like"))
                 .Include(a => a.User)
+                .Include(a => a.Reactions)
                 .ToListAsync();
             return answers;
         }

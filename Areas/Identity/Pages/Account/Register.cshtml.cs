@@ -75,6 +75,11 @@ namespace Onyx17.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            [DataType(DataType.Upload)]
+            [Display(Name = "Profile Image")]
+            public IFormFile? ProfileImage { get; set; }
+            public byte[]? ImageData { get; set; }
+            public string? ImageMimeType { get; set; }
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Name")]
@@ -109,7 +114,6 @@ namespace Onyx17.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
-
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
@@ -126,6 +130,16 @@ namespace Onyx17.Areas.Identity.Pages.Account
 
                 user.Name = Input.Name;
                 user.Description = Input.Description;
+
+                if (Input.ProfileImage != null && Input.ProfileImage.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await Input.ProfileImage.CopyToAsync(memoryStream);
+                        user.ImageData = memoryStream.ToArray();
+                        user.ImageMimeType = Input.ProfileImage.ContentType;
+                    }
+                }
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

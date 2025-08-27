@@ -68,6 +68,11 @@ namespace Onyx17.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+            [DataType(DataType.Upload)]
+            [Display(Name = "Profile Image")]
+            public IFormFile? ProfileImage { get; set; }
+            public byte[]? ImageData { get; set; }
+            public string? ImageMimeType { get; set; }
         }
 
         private async Task LoadAsync(User user)
@@ -81,7 +86,9 @@ namespace Onyx17.Areas.Identity.Pages.Account.Manage
             {
                 Name = user.Name,
                 Description = user.Description,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                ImageData = user.ImageData,
+                ImageMimeType = user.ImageMimeType
             };
         }
 
