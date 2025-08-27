@@ -20,8 +20,8 @@ namespace Onyx17.Repositories
             return await _context.Questions
                 .Include(q => q.User)
                 .Include(q => q.Answers)
-                .ThenInclude(a => a.Reactions)
-                .ThenInclude(u => u.User)
+                    .ThenInclude(a => a.Reactions)
+                    .ThenInclude(u => u.User)
                 .ToListAsync();
         }
 

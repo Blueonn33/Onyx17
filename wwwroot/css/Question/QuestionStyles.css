@@ -141,3 +141,8 @@
     width: 50px;
     height: min-content;
 }
+.questionUserImage {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}

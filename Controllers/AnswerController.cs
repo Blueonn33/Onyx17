@@ -18,19 +18,31 @@ namespace Onyx17.Controllers
             _userManager = userManager;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAnswersByQuestionId(int questionId)
+        {
+            if(questionId == 0)
+            {
+                return NotFound();
+            }
+
+            var answers = await _answerRepository.GetAllAnswersByQuestionIdAsync(questionId);
+            return View(answers);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddAnswer(int questionId, AnswerViewModel model)
         {
-            string userId = _userManager.GetUserId(User);
-            User user = await _userManager.GetUserAsync(User);
+            string? userId = _userManager.GetUserId(User);
+            User? user = await _userManager.GetUserAsync(User);
 
             if (questionId == 0)
             {
                 return NotFound();
             }
-            if (string.IsNullOrWhiteSpace(model.Text))
+            if (userId == null || user == null)
             {
-                return RedirectToAction("Index");
+                throw new Exception("User not found");
             }
 
             var answer = new Answer

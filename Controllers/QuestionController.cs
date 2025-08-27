@@ -29,8 +29,13 @@ namespace Onyx17.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(QuestionViewModel model)
         {
-            string userId = _userManager.GetUserId(User);
-            User user = await _userManager.GetUserAsync(User);
+            string? userId = _userManager.GetUserId(User);
+            User? user = await _userManager.GetUserAsync(User);
+
+            if(userId == null || user == null)
+            {
+                throw new Exception("User not found");
+            }
 
             var question = new Question
             {

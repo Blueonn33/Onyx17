@@ -9,6 +9,10 @@ namespace Onyx17.Areas.Identity.Data
         public string Name { get; set; }
         [PersonalData]
         public string? Description { get; set; }
+        [PersonalData]
+        public byte[]? ImageData { get; set; }
+        [PersonalData]
+        public string? ImageMimeType { get; set; }
         public ICollection<Answer> Answers { get; set; }
         public ICollection<Question> Questions { get; set; }
     }
