@@ -1,0 +1,29 @@
+﻿.loginBtnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.loginSubmit {
+    background-color: #002828;
+    border: 5px solid #037E7E;
+    padding: 5px 50px;
+    font-size: 25px;
+    color: white;
+    border-radius: 10px;
+}
+
+.loginSubmit:hover {
+    color: #002828;
+    background-color: white;
+}
+
+input {
+    height: 70px !important;
+    font-size: 20px !important;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

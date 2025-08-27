@@ -24,6 +24,9 @@
                 <div id="question-@question.Id">
                     <div class="mt-5 questionContentContainer" >
                         <div class="questionTextContainer me-5">
+                            <div class="questionUserNameContainer ms-3">
+                                <p class="text-light d-inline-block m-0 p-0">@question.User.Name</p>
+                            </div>
                             <p class="ps-3 fs-4 text-light mb-0 questionText">@question.Text</p>
                         </div>
                         <div>
@@ -80,12 +83,18 @@
                             {
                                 <div class="answerContentContainer" id="answer-@answer.Id">
                                     <div class="answerTextContainer mx-5 mb-4">
-                                        <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
-                                        <a class="answerOption" 
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#answerModal-@answer.Id">
-                                            <img src="~/Images/option.png" class="answerOptionImage" />
-                                        </a>
+                                        <div class="answerUserNameContainer ms-3">
+                                            <p class="text-dark d-inline-block m-0 p-0">@question.User.Name</p>
+                                        </div>
+                                        <div class="answerTextFlexContainer">
+                                            <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
+                                            <a class="answerOption"
+                                               data-bs-toggle="modal"
+                                               data-bs-target="#answerModal-@answer.Id">
+                                                <img src="~/Images/option.png" class="answerOptionImage" />
+                                            </a>
+                                        </div>
+                                        
                                     </div>
                                     <div class="answerReactionsContainer">
                                         <form method="post" asp-action="Create" asp-controller="Reaction">

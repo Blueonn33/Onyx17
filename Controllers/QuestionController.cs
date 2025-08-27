@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Onyx17.Areas.Identity.Data;
 using Onyx17.Models;
 using Onyx17.Repositories.Interfaces;
 using Onyx17.ViewModels;
@@ -9,9 +10,9 @@ namespace Onyx17.Controllers
     public class QuestionController : Controller
     {
         private readonly IQuestionRepository _repository;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<User> _userManager;
 
-        public QuestionController(IQuestionRepository repository, UserManager<IdentityUser> userManager)
+        public QuestionController(IQuestionRepository repository, UserManager<User> userManager)
         {
             _repository = repository;
             _userManager = userManager;
@@ -21,6 +22,7 @@ namespace Onyx17.Controllers
         public async Task<IActionResult> Index()
         {
             var questions = await _repository.GetAllQuestionsAsync();
+            ViewBag.User = await _userManager.GetUserAsync(User);
             return View(questions);
         }
 
@@ -37,6 +39,7 @@ namespace Onyx17.Controllers
             };
 
             await _repository.CreateQuestionAsync(question);
+            ViewBag.User = await _userManager.GetUserAsync(User);
             return RedirectToAction("Index");
         }
 
