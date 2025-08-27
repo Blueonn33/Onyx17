@@ -10,7 +10,7 @@ namespace Onyx17.Models
         public string AnswerB { get; set; }
         public string AnswerC { get; set; }
         public string AnswerD { get; set; }
-        public string CorrectAnswer { get; set; } // "A", "B", "C", "D"
+        public string CorrectAnswer { get; set; }
 
         [ForeignKey(nameof(QuizId))]
         public int QuizId { get; set; }

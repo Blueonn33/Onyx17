@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="questionsContainer mt-5">
-        <form method="post" asp-action="Create" class="questionsForm">
-            <div class="me-5">
+        <form method="post" asp-action="Create" class="questionsForm mb-5">
+            <div class="me-5 ">
                 <label for="Text" class="form-label fs-2 text-light mb-3">Задай въпрос</label>
                 <input type="text" name="Text" class="form-control questionInput" required/>
             </div>
@@ -22,7 +22,8 @@
             @foreach (var question in Model)
             {
                 <div id="question-@question.Id">
-                    <div class="mt-5 questionContentContainer" >
+                    <p class="fs-5 text-light fw-bold">@question.CreationDate</p>
+                    <div class="questionContentContainer" >
                         <div class="questionTextContainer me-5 row">
                             <div class="col-2">
                                 @if (question.User?.ImageData != null && question.User?.ImageMimeType != null)
@@ -91,7 +92,9 @@
                             foreach (var answer in question.Answers)
                             {
                                 <div class="answerContentContainer" id="answer-@answer.Id">
+                                    
                                     <div class="answerTextContainer mx-5 mb-4 row">
+                                        
                                         <div class="col-2">
                                             @if (answer.User?.ImageData != null && answer.User?.ImageMimeType != null)
                                             {
@@ -100,8 +103,11 @@
                                             }
                                         </div>
                                         <div class="col-10">
-                                            <div class="answerUserNameContainer ms-3">
-                                                <p class="text-dark d-inline-block m-0 p-0">@answer.User?.Name</p>
+                                            <div class="answerUserInfoContainer ms-3">
+                                                <div class="answerUserNameContainer">
+                                                    <p class="text-dark d-inline-block m-0 p-0">@answer.User?.Name</p>
+                                                </div>
+                                                <p class="fs-5 text-light fw-bold mb-0">@answer.CreationDate</p>
                                             </div>
                                             <div class="answerTextFlexContainer">
                                                 <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
