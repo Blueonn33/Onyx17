@@ -20,7 +20,9 @@
                     </header>
                     <div class="quizGetAnswerContainer me-5">
                         <div class="quizQuestionContainer">
-                            <img src="~/Images/question.png" width="50" class="p-1"/>
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#showAnswerModal-@quizQuestion.Id">
+                                <img src="~/Images/question.png" width="50" class="p-1" />
+                            </button>
                         </div>
                     </div>
                     <div class="quizAnswersContainer mx-5 mt-5">
@@ -53,6 +55,22 @@
                 <div class="quizButtonsContainer container my-5">
                     <a class="btn btn-lg btn-info ms-5">Край на теста</a>
                     <a class="btn btn-lg btn-light me-5">Следващ въпрос</a>
+                </div>
+                <div class="modal fade" id="showAnswerModal-@quizQuestion.Id" tabindex="-1" aria-labelledby="showAnswerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 text-light" id="showAnswerModalLabel">Отговор</h1>
+                                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-light fs-3">@quizQuestion.CorrectAnswer</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ОК</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         }

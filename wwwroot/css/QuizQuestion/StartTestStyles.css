@@ -44,3 +44,6 @@ header {
     display: flex;
     justify-content: space-between;
 }
+.modal-header, .modal-body {
+    background-color: #024343 !important;
+}
