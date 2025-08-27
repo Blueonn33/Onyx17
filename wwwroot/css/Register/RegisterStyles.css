@@ -1,0 +1,31 @@
+﻿.registerBtnContainer {
+    display: flex;
+    justify-content: center;
+}
+.registerSubmit {
+    background-color: #002828;
+    border: 5px solid #037E7E;
+    padding: 5px 50px;
+    font-size: 25px;
+    color: white;
+    border-radius: 10px;
+}
+.registerSubmit:hover {
+    color: #002828;
+    background-color: white;
+}
+input {
+    height: 70px !important;
+    font-size: 20px !important;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+textarea{
+    min-height: 120px !important;
+    height: 120px;
+    max-height: 120px;
+    font-size: 20px !important;
+}

@@ -34,8 +34,15 @@
     background-color: #1a1a1a;
     padding: 10px;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    flex-direction: column;*/
+}
+.questionUserNameContainer {
+    display:inline-block;
+    background-color: #016E6E;
+    padding: 2px 20px;
+    border-radius: 10px;
 }
 .questionHr {
     height: 10px;
@@ -72,16 +79,24 @@
     font-size: 20px !important;
 }
 .answerTextContainer {
-    display: flex;
-    align-items: center;
     background-color: #1a1a1a;
     padding: 8px;
     border-radius: 10px;
+}
+.answerTextFlexContainer{
+    display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 .answerContentContainer {
     display: grid;
     grid-template-columns: 3fr 1fr;
+}
+.answerUserNameContainer {
+    background-color: white;
+    display: inline-block;
+    padding: 2px 20px;
+    border-radius: 10px;
 }
 .answerReaction {
     width: 40px;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Onyx17.Areas.Identity.Data;
 using Onyx17.Models;
 using Onyx17.Repositories.Interfaces;
 using Onyx17.ViewModels;
@@ -10,9 +11,9 @@ namespace Onyx17.Controllers
     {
         private readonly IAnswerRepository _answerRepository;
         private readonly IReactionRepository _reactionRepository;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<User> _userManager;
 
-        public ReactionController(IAnswerRepository answerRepository, UserManager<IdentityUser> userManager, 
+        public ReactionController(IAnswerRepository answerRepository, UserManager<User> userManager, 
                 IReactionRepository reactionRepository)
         {
             _answerRepository = answerRepository;
