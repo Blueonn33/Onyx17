@@ -18,8 +18,10 @@ namespace Onyx17.Repositories
         public async Task<IEnumerable<Question>> GetAllQuestionsAsync()
         {
             return await _context.Questions
+                .Include(q => q.User)
                 .Include(q => q.Answers)
                 .ThenInclude(a => a.Reactions)
+                .ThenInclude(u => u.User)
                 .ToListAsync();
         }
 

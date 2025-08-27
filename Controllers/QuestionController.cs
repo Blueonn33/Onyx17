@@ -22,7 +22,7 @@ namespace Onyx17.Controllers
         public async Task<IActionResult> Index()
         {
             var questions = await _repository.GetAllQuestionsAsync();
-            ViewBag.User = await _userManager.GetUserAsync(User);
+            //ViewBag.User = await _userManager.GetUserAsync(User);
             return View(questions);
         }
 
@@ -30,16 +30,18 @@ namespace Onyx17.Controllers
         public async Task<IActionResult> Create(QuestionViewModel model)
         {
             string userId = _userManager.GetUserId(User);
+            User user = await _userManager.GetUserAsync(User);
 
             var question = new Question
             {
                 Text = model.Text,
                 CreationDate = DateTime.UtcNow,
-                UserId = userId
+                UserId = userId,
+                User = user
             };
 
             await _repository.CreateQuestionAsync(question);
-            ViewBag.User = await _userManager.GetUserAsync(User);
+            //ViewBag.User = await _userManager.GetUserAsync(User);
             return RedirectToAction("Index");
         }
 
