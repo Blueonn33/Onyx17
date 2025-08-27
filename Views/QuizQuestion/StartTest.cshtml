@@ -12,7 +12,7 @@
     <div class="startQuizContainer container mt-5">
         @foreach (var quizQuestion in Model)
         {
-            <form asp-action="Create" asp-controller="QuizQuestion" method="post" class="startQuizForm mb-5">
+            <div class="startQuizForm mb-5">
                 <div class="startQuizElement">
                     <header>
                         <h3 class="pt-3 fs-1">@quizQuestion.QuestionText</h3>
@@ -25,30 +25,30 @@
                             </button>
                         </div>
                     </div>
-                    <div class="quizAnswersContainer mx-5 mt-5">
+                    <div class="quizAnswersContainer mx-5 mt-5" id="quizAnswersContainer-@quizQuestion.Id">
                         <div class="quizOptionContainer">
                             <div class="quizOptionLetterContainer m-3">
                                 <p class="quizOptionLetter text-light fs-3 m-0">A</p>
                             </div>
-                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerA</button>
+                            <button class="btn btn-lg btn-light m-3 quizOptionButton">@quizQuestion.AnswerA</button>
                         </div>
                         <div class="quizOptionContainer">
                             <div class="quizOptionLetterContainer m-3">
                                 <p class="quizOptionLetter text-light fs-3 m-0">B</p>
                             </div>
-                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerB</button>
+                            <button class="btn btn-lg btn-light m-3 quizOptionButton">@quizQuestion.AnswerB</button>
                         </div>
                         <div class="quizOptionContainer">
                             <div class="quizOptionLetterContainer m-3">
                                 <p class="quizOptionLetter text-light fs-3 m-0">C</p>
                             </div>
-                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerC</button>
+                            <button class="btn btn-lg btn-light m-3 quizOptionButton">@quizQuestion.AnswerC</button>
                         </div>
                         <div class="quizOptionContainer">
                             <div class="quizOptionLetterContainer m-3">
                                 <p class="quizOptionLetter text-light fs-3 m-0">D</p>
                             </div>
-                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerD</button>
+                            <button class="btn btn-lg btn-light m-3 quizOptionButton">@quizQuestion.AnswerD</button>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         }
     </div>
 </body>
