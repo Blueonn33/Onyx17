@@ -22,6 +22,7 @@ namespace Onyx17.Controllers
         public async Task<IActionResult> AddAnswer(int questionId, AnswerViewModel model)
         {
             string userId = _userManager.GetUserId(User);
+            User user = await _userManager.GetUserAsync(User);
 
             if (questionId == 0)
             {
@@ -38,6 +39,7 @@ namespace Onyx17.Controllers
                 Text = model.Text,
                 CreationDate = DateTime.UtcNow,
                 UserId = userId,
+                User = user
             };
 
             await _answerRepository.CreateAnswerAsync(answer);
