@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
 using Onyx17.Areas.Identity.Data;
 using Onyx17.Data.EntityConfigurations;
@@ -31,6 +32,8 @@ public class ApplicationDbContext : IdentityDbContext<User>
         builder.ApplyConfiguration(new QuestionEntityConfiguration());
         builder.ApplyConfiguration(new AnswerEntityConfiguration());
         builder.ApplyConfiguration(new ReactionEntityConfiguration());
+        builder.ApplyConfiguration(new QuizEntityConfiguration());
+        builder.ApplyConfiguration(new QuizQuestionEntityConfiguration());
 
         builder.Entity<Answer>()
             .HasOne(a => a.Question)

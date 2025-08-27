@@ -16,7 +16,7 @@ namespace Onyx17.Data.EntityConfigurations
             builder.Property(qq => qq.AnswerB);
             builder.Property(qq => qq.AnswerC);
             builder.Property(qq => qq.AnswerD);
-            builder.Property(qq => qq.CorrectAnswer).IsRequired().HasMaxLength(1);
+            builder.Property(qq => qq.CorrectAnswer);
 
             builder.HasOne(qq => qq.Quiz)
                 .WithMany(q => q.QuizQuestions)

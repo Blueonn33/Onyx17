@@ -9,17 +9,52 @@
     <link rel="stylesheet" href="~/css/QuizQuestion/StartTestStyles.css" />
 </head>
 <body>
-    <div class="startQuizContainer">
+    <div class="startQuizContainer container mt-5">
         @foreach (var quizQuestion in Model)
         {
-            <div class="startQuizElement">
-                <h3>@quizQuestion.QuestionText</h3>
-                <button class="btn btn-lg btn-light">@quizQuestion.AnswerA</button>
-                <button class="btn btn-lg btn-light">@quizQuestion.AnswerB</button>
-                <button class="btn btn-lg btn-light">@quizQuestion.AnswerC</button>
-                <button class="btn btn-lg btn-light">@quizQuestion.AnswerD</button>
-            </div>
-            <a class="btn btn-lg btn-light">Следващ въпрос</a>
+            <form asp-action="Create" asp-controller="QuizQuestion" method="post" class="startQuizForm mb-5">
+                <div class="startQuizElement">
+                    <header>
+                        <h3 class="pt-3 fs-1">@quizQuestion.QuestionText</h3>
+                        <hr class="quizLine" />
+                    </header>
+                    <div class="quizGetAnswerContainer me-5">
+                        <div class="quizQuestionContainer">
+                            <img src="~/Images/question.png" width="50" class="p-1"/>
+                        </div>
+                    </div>
+                    <div class="quizAnswersContainer mx-5 mt-5">
+                        <div class="quizOptionContainer">
+                            <div class="quizOptionLetterContainer m-3">
+                                <p class="quizOptionLetter text-light fs-3 m-0">A</p>
+                            </div>
+                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerA</button>
+                        </div>
+                        <div class="quizOptionContainer">
+                            <div class="quizOptionLetterContainer m-3">
+                                <p class="quizOptionLetter text-light fs-3 m-0">B</p>
+                            </div>
+                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerB</button>
+                        </div>
+                        <div class="quizOptionContainer">
+                            <div class="quizOptionLetterContainer m-3">
+                                <p class="quizOptionLetter text-light fs-3 m-0">C</p>
+                            </div>
+                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerC</button>
+                        </div>
+                        <div class="quizOptionContainer">
+                            <div class="quizOptionLetterContainer m-3">
+                                <p class="quizOptionLetter text-light fs-3 m-0">D</p>
+                            </div>
+                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerD</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="quizButtonsContainer container my-5">
+                    <a class="btn btn-lg btn-info ms-5">Край на теста</a>
+                    <a class="btn btn-lg btn-light me-5">Следващ въпрос</a>
+                </div>
+            </form>
         }
     </div>
 </body>
