@@ -13,8 +13,8 @@ namespace Onyx17.Data.EntityConfigurations
             builder.HasKey(q => q.Id);
             builder.Property(q => q.Title).IsRequired().HasMaxLength(100);
             builder.Property(q => q.Description).HasMaxLength(1000);
-            builder.Property(q => q.ImageData).HasMaxLength(100);
-            builder.Property(q => q.ImageMimeType).HasMaxLength(100);
+            builder.Property(q => q.ImageData).IsRequired();
+            builder.Property(q => q.ImageMimeType).IsRequired().HasMaxLength(100);
 
             builder.HasMany(q => q.QuizQuestions)
                 .WithOne(qq => qq.Quiz)
