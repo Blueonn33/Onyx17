@@ -12,10 +12,10 @@
     <div class="startQuizContainer container mt-5">
         @foreach (var quizQuestion in Model)
         {
-            <form asp-action="Create" asp-controller="QuizQuestion" method="post" class="startQuizForm mb-5">
-                <div class="startQuizElement">
+            <div class="startQuizForm mb-5">
+                <div class="startQuizElement" id="quizContainer-@quizQuestion.Id">
                     <header>
-                        <h3 class="pt-3 fs-1">@quizQuestion.QuestionText</h3>
+                        <h3 class="pt-3 fs-1" id="quizQuestionText-@quizQuestion.Id">@quizQuestion.QuestionText</h3>
                         <hr class="quizLine" />
                     </header>
                     <div class="quizGetAnswerContainer me-5">
@@ -25,36 +25,36 @@
                             </button>
                         </div>
                     </div>
-                    <div class="quizAnswersContainer mx-5 mt-5">
+                    <div class="quizAnswersContainer mx-5 mt-5" data-correct-answer="@quizQuestion.CorrectAnswer">
                         <div class="quizOptionContainer">
                             <div class="quizOptionLetterContainer m-3">
                                 <p class="quizOptionLetter text-light fs-3 m-0">A</p>
                             </div>
-                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerA</button>
+                            <button class="btn btn-lg btn-light m-3 quizOptionButton">@quizQuestion.AnswerA</button>
                         </div>
                         <div class="quizOptionContainer">
                             <div class="quizOptionLetterContainer m-3">
                                 <p class="quizOptionLetter text-light fs-3 m-0">B</p>
                             </div>
-                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerB</button>
+                            <button class="btn btn-lg btn-light m-3 quizOptionButton">@quizQuestion.AnswerB</button>
                         </div>
                         <div class="quizOptionContainer">
                             <div class="quizOptionLetterContainer m-3">
                                 <p class="quizOptionLetter text-light fs-3 m-0">C</p>
                             </div>
-                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerC</button>
+                            <button class="btn btn-lg btn-light m-3 quizOptionButton">@quizQuestion.AnswerC</button>
                         </div>
                         <div class="quizOptionContainer">
                             <div class="quizOptionLetterContainer m-3">
                                 <p class="quizOptionLetter text-light fs-3 m-0">D</p>
                             </div>
-                            <button class="btn btn-lg btn-light m-3">@quizQuestion.AnswerD</button>
+                            <button class="btn btn-lg btn-light m-3 quizOptionButton">@quizQuestion.AnswerD</button>
                         </div>
                     </div>
                 </div>
                 <div class="quizButtonsContainer container my-5">
-                    <a class="btn btn-lg btn-info ms-5">Край на теста</a>
-                    <a class="btn btn-lg btn-light me-5">Следващ въпрос</a>
+                    <a asp-action="Index" asp-controller="Quiz" class="btn btn-lg btn-info ms-5">Край на теста</a>
+                    <a class="btn btn-lg btn-light me-5 btnNextQuestion" >Следващ въпрос</a>
                 </div>
                 <div class="modal fade" id="showAnswerModal-@quizQuestion.Id" tabindex="-1" aria-labelledby="showAnswerModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -72,7 +72,52 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         }
     </div>
 </body>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            document.querySelectorAll('.quizOptionButton').forEach(button => {
+                button.addEventListener('click', function () {
+                    const container = this.closest('.quizAnswersContainer');
+                    const correctAnswer = container.getAttribute('data-correct-answer');
+
+                    container.querySelectorAll('.quizOptionButton').forEach(btn => {
+                        btn.classList.remove('btn-success', 'btn-danger');
+                        btn.classList.add('btn-light');
+                    });
+
+                    container.querySelectorAll('.quizOptionButton').forEach(btn => {
+                        if (btn.textContent === correctAnswer) {
+                            btn.classList.remove('btn-light');
+                            btn.classList.add('btn-success');
+                        } else {
+                            btn.classList.remove('btn-light');
+                            btn.classList.add('btn-danger');
+                        }
+                    });
+                });
+            });
+
+            let currentIndex = 0;
+            const quizContainers = document.querySelectorAll('.startQuizForm');
+            quizContainers[currentIndex].style.display = 'block';
+
+            document.querySelectorAll('.btnNextQuestion').forEach(button => {
+                button.addEventListener('click', function () {
+                    quizContainers[currentIndex].style.display = 'none';
+                    currentIndex++;
+                    if (currentIndex < quizContainers.length) {
+                        quizContainers[currentIndex].style.display = 'block';
+                    } else {
+                        alert("Тестът приключи!");
+                        window.location.href = '/Quiz/Index';
+                    }
+                });
+            });
+        })
+    </script>
+}
