@@ -10,7 +10,8 @@ input{
 }
 textarea {
     font-size: 22px !important;
-    height: 80px;
+    min-height: 120px;
+    height: 120px;
     max-height: 200px;
 }
 .chapterContainer {
