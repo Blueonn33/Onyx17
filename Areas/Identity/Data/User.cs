@@ -15,5 +15,6 @@ namespace Onyx17.Areas.Identity.Data
         public string? ImageMimeType { get; set; }
         public ICollection<Answer> Answers { get; set; }
         public ICollection<Question> Questions { get; set; }
+        public ICollection<QuizResult> QuizResults { get; set; }
     }
 }

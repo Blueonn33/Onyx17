@@ -30,6 +30,7 @@ public class Program
         builder.Services.AddScoped<IReactionRepository, ReactionRepository>();
         builder.Services.AddScoped<IQuizRepository, QuizRepository>();
         builder.Services.AddScoped<IQuizQuestionRepository, QuizQuestionRepository>();
+        builder.Services.AddScoped<IQuizResultRepository, QuizResultRepository>();
 
         var app = builder.Build();
 

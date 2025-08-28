@@ -12,7 +12,7 @@
     <div class="startQuizContainer container mt-5">
         @foreach (var quizQuestion in Model)
         {
-            <div class="startQuizForm mb-5">
+            <div class="startQuizForm mb-5" data-quiz-id="@quizQuestion.Quiz.Id">
                 <div class="startQuizElement" id="quizContainer-@quizQuestion.Id">
                     <header>
                         <h3 class="pt-3 fs-1" id="quizQuestionText-@quizQuestion.Id">@quizQuestion.QuestionText</h3>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="quizButtonsContainer container my-5">
                     <a asp-action="Index" asp-controller="Quiz" class="btn btn-lg btn-info ms-5">Край на теста</a>
-                    <a class="btn btn-lg btn-light me-5 btnNextQuestion" >Следващ въпрос</a>
+                    <a class="btn btn-lg btn-light me-5 btnNextQuestion">Следващ въпрос</a>
                 </div>
                 <div class="modal fade" id="showAnswerModal-@quizQuestion.Id" tabindex="-1" aria-labelledby="showAnswerModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -80,6 +80,9 @@
 @section Scripts {
     <script>
         document.addEventListener("DOMContentLoaded", function(){
+            let correctAnswers = 0;
+            const quizId = document.querySelector('.startQuizForm').getAttribute('data-quiz-id');
+
             document.querySelectorAll('.quizOptionButton').forEach(button => {
                 button.addEventListener('click', function () {
                     const container = this.closest('.quizAnswersContainer');
@@ -94,6 +97,7 @@
                         if (btn.textContent === correctAnswer) {
                             btn.classList.remove('btn-light');
                             btn.classList.add('btn-success');
+                            correctAnswers++;
                         } else {
                             btn.classList.remove('btn-light');
                             btn.classList.add('btn-danger');
@@ -104,6 +108,7 @@
 
             let currentIndex = 0;
             const quizContainers = document.querySelectorAll('.startQuizForm');
+            let totalQuestions = quizContainers.length;
             quizContainers[currentIndex].style.display = 'block';
 
             document.querySelectorAll('.btnNextQuestion').forEach(button => {
@@ -113,8 +118,8 @@
                     if (currentIndex < quizContainers.length) {
                         quizContainers[currentIndex].style.display = 'block';
                     } else {
-                        alert("Тестът приключи!");
-                        window.location.href = '/Quiz/Index';
+                        // alert(`Тестът приключи! Ти реши ${correctAnswers} / ${totalQuestions} задачи.`);
+                        window.location.href = `/QuizResult/Index?quizId=${quizId}`;
                     }
                 });
             });

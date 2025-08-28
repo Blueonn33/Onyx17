@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Onyx17.Data;
 using Onyx17.Models;
+using Onyx17.Repositories.Interfaces;
 
-namespace Onyx17.Repositories.Interfaces
+namespace Onyx17.Repositories
 {
     public class QuizQuestionRepository : IQuizQuestionRepository
     {
