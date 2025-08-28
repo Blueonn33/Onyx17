@@ -1,4 +1,4 @@
-﻿@* @model QuizResult; *@
+﻿@model QuizResult;
 @{
     ViewData["Title"] = "Резултат от теста";
 }
@@ -9,13 +9,13 @@
 <body>
     <header>
         <h1>Тестът приключи</h1>
-        <p>Резултат: @ViewBag.Correct / @ViewBag.Total</p>
+        <p>Резултат: @Model.Score / @Model.TotalQuestions</p>
     </header>
     <section>
         <img src="~/Images/award.png" class="img-fluid awardImage"/>
     </section>
     <section>
-        <a class="btn btn-lg btn-secondary" asp-action="StartTest" asp-controller="QuizQuestion" asp-route-quizId="@ViewBag.QuizId">Започни нов</a>
+        <a class="btn btn-lg btn-secondary" asp-action="StartTest" asp-controller="QuizQuestion" asp-route-quizId="@Model.QuizId">Започни нов</a>
         <a class="btn btn-lg btn-secondary" asp-action="Index" asp-controller="Quiz">Изход</a>
     </section>
 </body>
