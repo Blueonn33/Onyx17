@@ -20,6 +20,11 @@ namespace Onyx17.Data.EntityConfigurations
                 .WithOne(qq => qq.Quiz)
                 .HasForeignKey(qq => qq.QuizId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(q => q.QuizResults)
+                .WithOne(qr => qr.Quiz)
+                .HasForeignKey(qr => qr.QuizId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

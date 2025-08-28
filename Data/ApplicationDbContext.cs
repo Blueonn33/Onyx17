@@ -22,6 +22,7 @@ public class ApplicationDbContext : IdentityDbContext<User>
     public DbSet<Reaction> Reactions { get; set; }
     public DbSet<Quiz> Quizzes { get; set; }
     public DbSet<QuizQuestion> QuizQuestions { get; set; }
+    public DbSet<QuizResult> QuizResults { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -34,6 +35,7 @@ public class ApplicationDbContext : IdentityDbContext<User>
         builder.ApplyConfiguration(new ReactionEntityConfiguration());
         builder.ApplyConfiguration(new QuizEntityConfiguration());
         builder.ApplyConfiguration(new QuizQuestionEntityConfiguration());
+        builder.ApplyConfiguration(new QuizResultEntityConfiguration());
 
         builder.Entity<Answer>()
             .HasOne(a => a.Question)

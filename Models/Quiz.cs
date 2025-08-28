@@ -9,5 +9,6 @@
         public string? ImageMimeType { get; set; }
 
         public ICollection<QuizQuestion> QuizQuestions { get; set; }
+        public ICollection<QuizResult> QuizResults { get; set; }
     }
 }
