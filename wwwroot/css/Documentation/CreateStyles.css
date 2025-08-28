@@ -32,3 +32,6 @@ input{
 .editContainer{
     margin-bottom: 10vh;
 }
+.editDocHeading{
+    text-align: center;
+}

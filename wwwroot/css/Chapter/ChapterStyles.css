@@ -55,3 +55,8 @@ textarea {
 .createChapterHeading{
     text-align: center;
 }
+.chapterButtonsContainer{
+    display: grid;
+    justify-content: center;
+    row-gap: 20px;
+}
