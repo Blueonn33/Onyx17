@@ -137,6 +137,15 @@ namespace Onyx17.Areas.Identity.Pages.Account.Manage
             {
                 user.Description = Input.Description;
             }
+            if (Input.ProfileImage != null && Input.ProfileImage.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await Input.ProfileImage.CopyToAsync(memoryStream);
+                    user.ImageData = memoryStream.ToArray();
+                    user.ImageMimeType = Input.ProfileImage.ContentType;
+                }
+            }
 
             await _userManager.UpdateAsync(user);
             await _signInManager.RefreshSignInAsync(user);

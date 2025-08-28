@@ -1,7 +1,7 @@
 ﻿body {
     margin: 0;
     width: 100%;
-    background: linear-gradient(45deg, #42AFAF, #000) !important;
+    background: linear-gradient(180deg, #fff, #42AFAF, #000) !important;
     background-size: 100% 100%;
 }
 .quizForm {
@@ -24,4 +24,7 @@ textarea {
     max-height: 200px;
     min-height: 70px;
     height: 70px;
+}
+.createQuizHeading{
+    text-align: center;
 }

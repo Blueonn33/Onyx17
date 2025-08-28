@@ -7,15 +7,17 @@
     <link href="~/css/QuizResult/QuizResultStyles.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <h1>Тестът приключи</h1>
-        <p>Резултат: @Model.Score / @Model.TotalQuestions</p>
+    <header class="mt-5 mb-5">
+        <div class="testOverHeadingContainer">
+            <h1 class="testOverHeading">Тестът приключи</h1>
+            <p class="testResultText fs-1">Резултат: <span class="testResult">@Model.Score / @Model.TotalQuestions</span></p>
+        </div>
     </header>
-    <section>
+    <section class="awardImageContainer">
         <img src="~/Images/award.png" class="img-fluid awardImage"/>
     </section>
-    <section>
-        <a class="btn btn-lg btn-secondary" asp-action="StartTest" asp-controller="QuizQuestion" asp-route-quizId="@Model.QuizId">Започни нов</a>
-        <a class="btn btn-lg btn-secondary" asp-action="Index" asp-controller="Quiz">Изход</a>
+    <section class="testResultButtonsContainer mt-5">
+        <a class="btn btn-lg btn-startTest" asp-action="StartTest" asp-controller="QuizQuestion" asp-route-quizId="@Model.QuizId">Започни нов</a>
+        <a class="btn btn-lg btn-exitTest" asp-action="Index" asp-controller="Quiz">Изход</a>
     </section>
 </body>

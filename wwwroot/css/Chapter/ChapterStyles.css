@@ -52,3 +52,6 @@ textarea {
     border: none;
     border-radius: 10px;
 }
+.createChapterHeading{
+    text-align: center;
+}
