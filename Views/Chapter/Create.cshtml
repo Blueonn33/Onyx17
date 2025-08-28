@@ -23,13 +23,15 @@
                 <label asp-for="PdfFile" class="form-label text-light fs-3">PDF файл</label>
                 <input asp-for="PdfFile" class="form-control" type="file" accept="application/pdf"/>
             </div>
-            <button type="submit" class="btn btn-lg btn-info" asp-route-languageId="@ViewBag.languageId">
-               Създай
-           </button>
-            <a class="btn btn-lg btn-light" asp-action="Index" asp-controller="Chapter" 
-                asp-route-languageId="@ViewBag.languageId">
-                Назад
-            </a>
+            <div class="chapterButtonsContainer">
+                <button type="submit" class="btn btn-lg btn-info" asp-route-languageId="@ViewBag.languageId">
+                    Създай
+                </button>
+                <a class="btn btn-lg btn-light" asp-action="Index" asp-controller="Chapter"
+                   asp-route-languageId="@ViewBag.languageId">
+                    Назад
+                </a>
+            </div>
         </form>
     </div>
 </body>

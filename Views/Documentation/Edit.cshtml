@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container mt-5 editContainer">
-        <h1 class="fs-1 text-light mb-5">Редактиране на документация</h1>
+        <h1 class="fs-1 mb-5 editDocHeading">Редактиране на документация</h1>
 
         <form method="post" asp-action="Edit" asp-route-languageId="@ViewBag.LanguageId" enctype="multipart/form-data" class="documentationForm">
             <input type="hidden" asp-for="ImageData" />

@@ -22,8 +22,8 @@ input {
 textarea {
     font-size: 25px !important;
     max-height: 200px;
-    min-height: 70px;
-    height: 70px;
+    min-height: 120px;
+    height: 120px;
 }
 .createQuizHeading{
     text-align: center;
