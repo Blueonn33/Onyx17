@@ -93,16 +93,25 @@
                         btn.classList.add('btn-light');
                     });
 
-                    container.querySelectorAll('.quizOptionButton').forEach(btn => {
-                        if (btn.textContent === correctAnswer) {
-                            btn.classList.remove('btn-light');
-                            btn.classList.add('btn-success');
-                            correctAnswers++;
-                        } else {
-                            btn.classList.remove('btn-light');
-                            btn.classList.add('btn-danger');
-                        }
-                    });
+                    if (this.textContent.trim() === correctAnswer.trim()) 
+                    {
+                        this.classList.remove('btn-light');
+                        this.classList.add('btn-success');
+                        correctAnswers++;
+                    } 
+                    else 
+                    {
+                        this.classList.remove('btn-light');
+                        this.classList.add('btn-danger');
+                        container.querySelectorAll('.quizOptionButton').forEach(btn => 
+                        {
+                            if (btn.textContent.trim() === correctAnswer.trim()) 
+                            {
+                                btn.classList.remove('btn-light');
+                                btn.classList.add('btn-success');
+                            }
+                        });
+                    }
                 });
             });
 
@@ -118,11 +127,31 @@
                     if (currentIndex < quizContainers.length) {
                         quizContainers[currentIndex].style.display = 'block';
                     } else {
-                        // alert(`Тестът приключи! Ти реши ${correctAnswers} / ${totalQuestions} задачи.`);
+                        alert(`Тестът приключи! Ти реши ${correctAnswers} / ${totalQuestions} задачи.`);
+                        
+                        // window.location.href = `/QuizResult/Index?quizId=${quizId}&correct=${correctAnswers}&total=${totalQuestions}`;
                         window.location.href = `/QuizResult/Index?quizId=${quizId}`;
+                        addQuizResult(quizId, correctAnswers, totalQuestions);
                     }
                 });
             });
         })
+
+        function addQuizResult(quizId, correctAnswers, totalQuestions)
+        {
+            $.post("@Url.Action("Create", "QuizResult")?quizId=" + quizId,
+                { 
+                    Score: correctAnswers, 
+                    TotalQuestions : totalQuestions,
+                    QuizId: quizId,
+                    TakenAt: Date.now()
+                },
+                function(returnedData){
+                    console.log(returnedData);
+                })
+                .fail(function(){
+                  alert("error");
+            });
+        }
     </script>
 }
