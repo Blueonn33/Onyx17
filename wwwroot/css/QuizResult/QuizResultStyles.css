@@ -1,6 +1,54 @@
 ﻿body {
     margin: 0;
     width: 100%;
-    background: linear-gradient(45deg, #42AFAF, #000) !important;
+    background: linear-gradient(180deg, #fff, #42AFAF, #000) !important;
     background-size: 100% 100%;
+}
+.testOverHeadingContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.testOverHeading{
+    text-transform: uppercase;
+    color: black;
+    font-size: 45px;
+}
+.testResultText{
+    color: black;
+}
+.testResult{
+    font-weight: bold;
+}
+.awardImageContainer{
+    display: flex;
+    justify-content: center;
+}
+.awardImage{
+    width: 30%;
+    height: auto;
+}
+.testResultButtonsContainer {
+    display: grid;
+    justify-content: center;
+    row-gap: 30px;
+}
+.btn-startTest {
+    border: 5px solid #037E7E;
+    background-color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 5px 40px;
+}
+.btn-startTest:hover{
+    color: white;
+}
+.btn-exitTest {
+    background-color: #002828;
+    border: 5px solid white;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 5px 40px;
+    color: white;
 }
