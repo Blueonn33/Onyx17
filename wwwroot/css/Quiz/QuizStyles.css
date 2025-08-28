@@ -25,4 +25,6 @@
 .quizImage {
     width: 50%;
     height: auto;
+    border-radius: 30px;
 }
+

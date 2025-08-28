@@ -47,3 +47,6 @@ header {
 .modal-header, .modal-body {
     background-color: #024343 !important;
 }
+.startQuizForm {
+    display: none;
+}
