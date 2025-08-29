@@ -36,5 +36,6 @@ public class ApplicationDbContext : IdentityDbContext<User>
         builder.ApplyConfiguration(new QuizEntityConfiguration());
         builder.ApplyConfiguration(new QuizQuestionEntityConfiguration());
         builder.ApplyConfiguration(new QuizResultEntityConfiguration());
+        builder.ApplyConfiguration(new UserEntityConfiguration());
     }
 }

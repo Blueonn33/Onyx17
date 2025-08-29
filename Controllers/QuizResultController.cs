@@ -68,16 +68,7 @@ namespace Onyx17.Controllers
 
             await _repository.CreateQuizResultAsync(quizResult);
             ViewBag.QuizId = quizId;
-            return View(quizResult);
+            return RedirectToAction("Index", new { quizId = quizId });
         }
-
-        //[HttpGet]
-        //public async Task<IActionResult> Index(int quizId, int correct, int total)
-        //{
-        //    ViewBag.QuizId = quizId;
-        //    ViewBag.Correct = correct;
-        //    ViewBag.Total = total;
-        //    return View();
-        //}
     }
 }

@@ -27,7 +27,9 @@ namespace Onyx17.Repositories
             }
 
             var quizResult = await _context.QuizResults
-                .Where(qr => qr.QuizId == quizId && qr.UserId == userId).ToListAsync();
+                .Where(qr => qr.QuizId == quizId && qr.UserId == userId)
+                .OrderByDescending(q => q.TakenAt)
+                .ToListAsync();
 
             return quizResult;
         }

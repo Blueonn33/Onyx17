@@ -127,10 +127,6 @@
                     if (currentIndex < quizContainers.length) {
                         quizContainers[currentIndex].style.display = 'block';
                     } else {
-                        alert(`Тестът приключи! Ти реши ${correctAnswers} / ${totalQuestions} задачи.`);
-                        
-                        // window.location.href = `/QuizResult/Index?quizId=${quizId}&correct=${correctAnswers}&total=${totalQuestions}`;
-                        window.location.href = `/QuizResult/Index?quizId=${quizId}`;
                         addQuizResult(quizId, correctAnswers, totalQuestions);
                     }
                 });
@@ -146,8 +142,8 @@
                     QuizId: quizId,
                     TakenAt: Date.now()
                 },
-                function(returnedData){
-                    console.log(returnedData);
+                function(){
+                    window.location.href = `/QuizResult/Index?quizId=${quizId}`;
                 })
                 .fail(function(){
                   alert("error");

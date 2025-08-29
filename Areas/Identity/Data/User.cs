@@ -16,5 +16,6 @@ namespace Onyx17.Areas.Identity.Data
         public ICollection<Answer> Answers { get; set; }
         public ICollection<Question> Questions { get; set; }
         public ICollection<QuizResult> QuizResults { get; set; }
+        public ICollection<Reaction> Reactions { get; set; }
     }
 }
