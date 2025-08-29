@@ -35,10 +35,10 @@
 ## 🏡 Начална страница
 - Съдържа описание на приложението, както и снимка за всяка от функционалностите.
 - Има меню с три бутона - по един за всяка функционалност, които служат за навигация в страницата.
-<img width="1272" height="675" alt="image" src="https://github.com/user-attachments/assets/5ac0a46d-6e03-459c-aa11-f0ea74ad8e69" />
-<img width="1272" height="675" alt="image" src="https://github.com/user-attachments/assets/6b4c6e39-d32a-4371-b43b-293eac436034" />
-<img width="1272" height="675" alt="image" src="https://github.com/user-attachments/assets/f183de8b-5ffb-4276-925d-03775b8b1659" />
-<img width="1272" height="675" alt="image" src="https://github.com/user-attachments/assets/0256ef08-444b-4b55-ab94-195871bdaec4" />
+<img width="1272" height="675" alt="Home-1" src="https://github.com/user-attachments/assets/86ef1287-297b-4d76-b5f0-80acab3387f6" />
+<img width="1272" height="675" alt="Home-2" src="https://github.com/user-attachments/assets/4f040369-bec7-4e03-bed6-7733c13f3a3d" />
+<img width="1272" height="675" alt="Home-3" src="https://github.com/user-attachments/assets/92a5b000-84d4-4271-a7bf-af722485b783" />
+<img width="1272" height="675" alt="Home-4" src="https://github.com/user-attachments/assets/c8cc3cbd-ec0b-4036-8506-9a1321bd298e" />
 
 ## ®️ Регистрация
 - Потребителят въвежда следната информация:
