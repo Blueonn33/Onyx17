@@ -67,7 +67,7 @@ body {
 body {
     margin: 0;
     width: 100%;
-    background: linear-gradient(45deg, #42AFAF, #000, #fff);
+    background: linear-gradient(45deg, #fff, #000, #42AFAF);
     background-size: 400% 400%;
     animation: gradient 7s ease infinite;
 }
