@@ -21,6 +21,7 @@ namespace Onyx17.Repositories
                 .Include(q => q.User)
                 .Include(q => q.Answers)
                     .ThenInclude(a => a.Reactions)
+                .Include(q => q.Answers)
                     .ThenInclude(u => u.User)
                 .ToListAsync();
         }

@@ -19,14 +19,18 @@ namespace Onyx17.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAnswersByQuestionId(int questionId)
+        public async Task<IActionResult> GetAnswersByQuestionId(int questionId, string userId)
         {
             if(questionId == 0)
             {
                 return NotFound();
             }
+            if (userId == null)
+            {
+                return NotFound();
+            }
 
-            var answers = await _answerRepository.GetAllAnswersByQuestionIdAsync(questionId);
+            var answers = await _answerRepository.GetAllAnswersByQuestionAndUserIdAsync(questionId, userId);
             return View(answers);
         }
 
@@ -49,7 +53,7 @@ namespace Onyx17.Controllers
             {
                 QuestionId = questionId,
                 Text = model.Text,
-                CreationDate = DateTime.UtcNow,
+                CreationDate = DateTime.Now,
                 UserId = userId,
                 User = user
             };

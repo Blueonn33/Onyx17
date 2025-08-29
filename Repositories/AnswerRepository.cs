@@ -15,15 +15,19 @@ namespace Onyx17.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Answer>> GetAllAnswersByQuestionIdAsync(int questionId)
+        public async Task<IEnumerable<Answer>> GetAllAnswersByQuestionAndUserIdAsync(int questionId, string userId)
         {
-            if(questionId == 0)
+            if (questionId == 0)
             {
                 throw new ArgumentException("Въпросът не може да бъде с ID = 0.", nameof(questionId));
             }
+            if (userId == null)
+            {
+                throw new ArgumentNullException(nameof(userId));
+            }
 
             var answers = await _context.Answers
-                .Where(a => a.QuestionId == questionId)
+                .Where(a => a.QuestionId == questionId && a.UserId == userId)
                 .Include(a => a.User)
                 .Include(a => a.Reactions)
                 .ToListAsync();

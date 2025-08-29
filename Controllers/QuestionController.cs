@@ -40,7 +40,7 @@ namespace Onyx17.Controllers
             var question = new Question
             {
                 Text = model.Text,
-                CreationDate = DateTime.UtcNow,
+                CreationDate = DateTime.Now,
                 UserId = userId,
                 User = user
             };
