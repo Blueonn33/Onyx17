@@ -36,16 +36,5 @@ public class ApplicationDbContext : IdentityDbContext<User>
         builder.ApplyConfiguration(new QuizEntityConfiguration());
         builder.ApplyConfiguration(new QuizQuestionEntityConfiguration());
         builder.ApplyConfiguration(new QuizResultEntityConfiguration());
-
-        builder.Entity<Answer>()
-            .HasOne(a => a.Question)
-            .WithMany(q => q.Answers)
-            .HasForeignKey(a => a.QuestionId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        builder.Entity<Answer>()
-            .HasOne(a => a.Question)
-            .WithMany(q => q.Answers)
-            .OnDelete(DeleteBehavior.Restrict);
     }
 }
