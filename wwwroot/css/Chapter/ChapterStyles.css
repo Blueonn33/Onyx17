@@ -59,5 +59,6 @@ textarea {
 .chapterButtonsContainer{
     display: grid;
     justify-content: center;
-    row-gap: 20px;
+    row-gap: 40px;
+    grid-template-columns: 0.3fr;
 }
