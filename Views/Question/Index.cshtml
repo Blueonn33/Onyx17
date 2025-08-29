@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="modal fade" id="questionModal-@question.Id" tabindex="-1" aria-labelledby="questionModalLabel-@question.Id" aria-hidden="true">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="questionModalLabel-@question.Id">Редактирай въпроса</h1>
@@ -118,8 +118,6 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        
-                                        
                                     </div>
                                     <div class="answerReactionsContainer">
                                         <form method="post" asp-action="Create" asp-controller="Reaction">
@@ -140,7 +138,7 @@
                                     </div>
                                 </div>
                                 <div class="modal fade answerModal" id="answerModal-@answer.Id" tabindex="-1" aria-labelledby="answerModalLabel-@answer.Id" aria-hidden="true">
-                                    <div class="modal-dialog">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="answerModalLabel-@answer.Id">Редактирай отговора</h1>
