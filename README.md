@@ -45,31 +45,38 @@
   - `Имейл`
   - `Парола`
   - `Потвърждаване на паролата`
-<img width="1280" height="674" alt="image" src="https://github.com/user-attachments/assets/5ee50534-6297-4ff5-aeef-e38e90eb222e" />
+<img width="1280" height="676" alt="Register" src="https://github.com/user-attachments/assets/bbe0be88-01dc-4b41-97ae-0050f06fc0e4" />
 
 ## 🚪 Вход
 - След като потребителят се е регистрирал, той може да влиза в приложението с профила си. Във формата за вход се попълва:
   - `Имейл`
   - `Парола`
-<img width="1280" height="674" alt="image" src="https://github.com/user-attachments/assets/2029f66c-12d2-43b9-96c1-616d41f8fc3c" />
+<img width="1280" height="676" alt="Login" src="https://github.com/user-attachments/assets/7a6b2925-efeb-4bba-ae78-c7aff5fba3bd" />
 
 ## 📄 Документация
 - В страницата за документация има полезна информация за езиците за програмиране. Информацията се представя чрез статии в PDF формат.
-<img width="1271" height="674" alt="image" src="https://github.com/user-attachments/assets/e1734413-bd26-4612-bf52-fa3d8a8244f9" />
+<img width="1280" height="676" alt="Languages" src="https://github.com/user-attachments/assets/6285eca7-9f93-406a-9f1c-05e65ed7ba1e" />
 
 - За създаването на документация за даден език са нужни:
   - `Снимка на езика`
   - `Име на езика`
-<img width="1280" height="674" alt="image" src="https://github.com/user-attachments/assets/d941b8d5-ddfb-4acc-90fa-c34bcda7e735" />
+<img width="1280" height="676" alt="CreateDocumentation" src="https://github.com/user-attachments/assets/884a8da3-4299-419b-a5e7-750571f01342" />
+
+- Документацията може да се редактира. Снимката и името могат да бъдат променени
+<img width="1280" height="674" alt="EditDocumentation" src="https://github.com/user-attachments/assets/5b57c061-27b6-4654-b710-99983607f566" />
 
 - Документацията се състои от раздели, като за всеки раздел има статия
+- Разделите имат кратко описание на това какви теми се разглеждат в тях
+<img width="1280" height="675" alt="Chapters" src="https://github.com/user-attachments/assets/9b3e82e0-c7b3-456e-9bfa-1ad9f206cac7" />
+
+- След това за конкретния раздел се отваря статията
 <img width="1280" height="674" alt="image" src="https://github.com/user-attachments/assets/b0beb8b9-33da-4661-98bb-6f0f94491983" />
 
 - За създаването на раздел се попълва следното:
   - `Име на раздела`
   - `Описание`
   - `Статия (PDF файл)`
-<img width="1280" height="674" alt="image" src="https://github.com/user-attachments/assets/f29f1c49-1667-4955-b755-96c04496f6a5" />
+<img width="1280" height="675" alt="CreateChapter" src="https://github.com/user-attachments/assets/a478fe68-6498-40b4-ae59-213d48aa41b5" />
 
 ## 💬 Форум
 - В тази страницата потребителите могат да задават въпроси и останалите да им отговарят.
