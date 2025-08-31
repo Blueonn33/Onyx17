@@ -9,8 +9,10 @@
     border-radius: 10px;
 }
 .manageProfilePicture {
-    width: 200px;
-    height: 200px;
+    width: 260px;
+    height: auto;
+    max-height: 260px;
+    min-height: 200px;
     border-radius: 20px;
 }
 textarea{

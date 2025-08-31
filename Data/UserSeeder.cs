@@ -11,9 +11,9 @@ namespace Onyx17.Data
             var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
             var adminEmail = configuration["AdminUser:Email"];
             var adminPassword = configuration["AdminUser:Password"];
-            var adminName = "Администратор";
+            var adminName = "ONYX";
             var adminDescription = "Администратор на уеб приложение 'Оникс'";
-            var adminProfileImage = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "Logo.png");
+            var adminProfileImage = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "Onyx.png");
 
             await CreateUserWithRole(userManager, adminEmail, adminPassword, adminName, adminDescription,
                 adminProfileImage, Roles.Admin);
