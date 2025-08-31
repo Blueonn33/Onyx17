@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Language>
+﻿@using Onyx17.Constants
+@model IEnumerable<Language>
 @{
     ViewData["Title"] = "Документация";
 }
@@ -8,21 +9,27 @@
     <link rel="stylesheet" href="~/css/Documentation/DocumentationStyles.css" />
 </head>
 <body>
-    <div class="createDocumentationButtonContainer mt-5">
-        <a asp-action="Create" asp-controller="Documentation" class="btn btn-lg btn-createLanguage">Създай</a>
-    </div>
+    @if (User.IsInRole(Roles.Admin))
+    {
+        <div class="createDocumentationButtonContainer mt-5">
+            <a asp-action="Create" asp-controller="Documentation" class="btn btn-lg btn-createLanguage">Създай</a>
+        </div>
+    }
     <div class="container mt-5 displayLanguagesContainer">
         <div class="languageContainer">
           
             @foreach(var language in Model)
             {
                 <div class="language" id="language-@language.Id">
-                    <div class="trashContainer">
-                        <a onclick="deleteLanguage(@language.Id)"><img src="~/Images/trash-can.png" class="trash" /></a>
-                    </div>
-                    <div class="penContainer">
-                        <a asp-action="Edit" asp-controller="Documentation" asp-route-languageId="@language.Id"><img src="~/Images/pen.png" class="pen" /></a>
-                    </div>
+                    @if (User.IsInRole(Roles.Admin))
+                    {
+                        <div class="trashContainer">
+                            <a onclick="deleteLanguage(@language.Id)"><img src="~/Images/trash-can.png" class="trash" /></a>
+                        </div>
+                        <div class="penContainer">
+                            <a asp-action="Edit" asp-controller="Documentation" asp-route-languageId="@language.Id"><img src="~/Images/pen.png" class="pen" /></a>
+                        </div>
+                    }
                     <div class="languageImageContainer p-3 mt-3">
                         @if (language.ImageData != null)
                         {
