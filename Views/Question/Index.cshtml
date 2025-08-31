@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Question>
+﻿@using Onyx17.Constants
+@model IEnumerable<Question>
 @{
     ViewData["Title"] = "Форум";
 }
@@ -21,10 +22,11 @@
         <div class="questionsList">
             @foreach (var question in Model)
             {
+                
                 <div id="question-@question.Id">
                     <p class="fs-5 text-light fw-bold">@question.CreationDate</p>
                     <div class="questionContentContainer" >
-                        <div class="questionTextContainer me-5 row">
+                        <div class="questionTextContainer me-5 row @(question.User.Email == "admin@onyx.com" ? "admin-styles" : "")">
                             <div class="col-2">
                                 @if (question.User?.ImageData != null && question.User?.ImageMimeType != null)
                                 {
@@ -33,9 +35,23 @@
                                 }
                             </div>
                             <div class="col-10">
-                                <div class="questionUserNameContainer ms-3">
-                                    <p class="text-light d-inline-block m-0 p-0">@question.User?.Name</p>
-                                </div>
+                                @if (question.User.Email == "admin@onyx.com")
+                                {
+                                    <div class="adminNameContainer">
+                                        <div class="adminName">
+                                            <p class="text-light mb-0">@question.User.Name👽</p>
+                                        </div>
+                                        <div class="adminName m-0">
+                                            <p class="text-light ms-3 mb-0">Admin</p>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="questionUserNameContainer ms-3">
+                                        <p class="text-light d-inline-block m-0 p-0 fw-bold">@question.User.Name</p>
+                                    </div>
+                                }
                                 <p class="ps-3 fs-4 text-light mb-0 questionText">@question.Text</p>
                             </div>
                         </div>
@@ -92,9 +108,7 @@
                             foreach (var answer in question.Answers)
                             {
                                 <div class="answerContentContainer" id="answer-@answer.Id">
-                                    
-                                    <div class="answerTextContainer mx-5 mb-4 row">
-                                        
+                                    <div class="answerTextContainer mx-5 mb-4 row @(answer.User.Email == "admin@onyx.com" ? "admin-styles" : "")">
                                         <div class="col-2">
                                             @if (answer.User?.ImageData != null && answer.User?.ImageMimeType != null)
                                             {
@@ -104,9 +118,23 @@
                                         </div>
                                         <div class="col-10">
                                             <div class="answerUserInfoContainer ms-3">
-                                                <div class="answerUserNameContainer">
-                                                    <p class="text-dark d-inline-block m-0 p-0">@answer.User?.Name</p>
-                                                </div>
+                                                @if (answer.User.Email == "admin@onyx.com")
+                                                {
+                                                    <div class="adminNameContainer">
+                                                        <div class="adminName">
+                                                            <p class="text-light mb-0">@answer.User.Name👽</p>
+                                                        </div>
+                                                        <div class="adminName m-0">
+                                                            <p class="text-light ms-3 mb-0">Admin</p>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="answerUserNameContainer">
+                                                        <p class="text-dark d-inline-block m-0 p-0 fw-bold">@answer.User?.Name</p>
+                                                    </div>
+                                                }
                                                 <p class="fs-5 text-light fw-bold mb-0">@answer.CreationDate</p>
                                             </div>
                                             <div class="answerTextFlexContainer">
@@ -230,5 +258,10 @@
                     }
             });
         }
+
+        // function adminStyle()
+        // {
+        //     document.querySelector('.questionTextContainer').classList.add("admin-styles");
+        // }
     </script>
 }

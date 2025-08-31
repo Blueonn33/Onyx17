@@ -11,7 +11,7 @@ namespace Onyx17.Data
             var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
             var adminEmail = configuration["AdminUser:Email"];
             var adminPassword = configuration["AdminUser:Password"];
-            var adminName = "Onyx";
+            var adminName = "ONYX";
             var adminDescription = "Администратор на уеб приложение 'Оникс'";
             var adminProfileImage = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "Onyx.png");
 
