@@ -56,21 +56,24 @@
                             </div>
                         </div>
                         <div>
-                            <div class="questionOptionsContainer ms-5">
-                                <a class="questionTrash"
-                                   onclick="deleteQuestion(@question.Id)"
-                                   onmouseover="openTrash('trash-@question.Id')"
-                                   onmouseout="closeTrash('trash-@question.Id')">
-                                    <img src="~/Images/trash-can.png" class="questionOptions" id="trash-@question.Id" />
-                                </a>
-                                <a class="questionEdit"
-                                   data-bs-toggle="modal"
-                                   data-bs-target="#questionModal-@question.Id"
-                                   onmouseover="openEdit('edit-@question.Id')"
-                                   onmouseout="closeEdit('edit-@question.Id')">
-                                    <img src="~/Images/edit.png" class="questionOptions ms-3" id="edit-@question.Id" />
-                                </a>
-                            </div>
+                            @if(ViewBag.UserId == question.UserId || User.IsInRole(Roles.Admin))
+                            {
+                                <div class="questionOptionsContainer ms-5">
+                                    <a class="questionTrash"
+                                       onclick="deleteQuestion(@question.Id)"
+                                       onmouseover="openTrash('trash-@question.Id')"
+                                       onmouseout="closeTrash('trash-@question.Id')">
+                                       <img src="~/Images/trash-can.png" class="questionOptions" id="trash-@question.Id" />
+                                    </a>
+                                    <a class="questionEdit"
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#questionModal-@question.Id"
+                                       onmouseover="openEdit('edit-@question.Id')"
+                                       onmouseout="closeEdit('edit-@question.Id')">
+                                       <img src="~/Images/edit.png" class="questionOptions ms-3" id="edit-@question.Id" />
+                                    </a>
+                                </div>
+                            }
                         </div>
                         <div class="modal fade" id="questionModal-@question.Id" tabindex="-1" aria-labelledby="questionModalLabel-@question.Id" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -139,11 +142,14 @@
                                             </div>
                                             <div class="answerTextFlexContainer">
                                                 <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
-                                                <a class="answerOption"
-                                                   data-bs-toggle="modal"
-                                                   data-bs-target="#answerModal-@answer.Id">
-                                                    <img src="~/Images/option.png" class="answerOptionImage" />
-                                                </a>
+                                                @if(ViewBag.UserId == answer.UserId || User.IsInRole(Roles.Admin))
+                                                {
+                                                   <a class="answerOption"
+                                                       data-bs-toggle="modal"
+                                                       data-bs-target="#answerModal-@answer.Id">
+                                                       <img src="~/Images/option.png" class="answerOptionImage" />
+                                                    </a> 
+                                                }
                                             </div>
                                         </div>
                                     </div>

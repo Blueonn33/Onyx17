@@ -21,8 +21,11 @@ namespace Onyx17.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            User user = await _userManager.GetUserAsync(User);
+            string userId = await _userManager.GetUserIdAsync(user);
+
             var questions = await _repository.GetAllQuestionsAsync();
-            //ViewBag.User = await _userManager.GetUserAsync(User);
+            ViewBag.UserId = userId;
             return View(questions);
         }
 
