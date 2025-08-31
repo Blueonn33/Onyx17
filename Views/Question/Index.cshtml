@@ -39,17 +39,17 @@
                                 {
                                     <div class="adminNameContainer">
                                         <div class="adminName">
-                                            <p class="text-light mb-0">@question.User.Name👽</p>
+                                            <p class="text-light mb-0 fs-5">@question.User.Name👽</p>
                                         </div>
                                         <div class="adminName m-0">
-                                            <p class="text-light ms-3 mb-0">Admin</p>
+                                            <p class="text-light ms-3 mb-0 fs-5">Admin</p>
                                         </div>
                                     </div>
                                 }
                                 else
                                 {
                                     <div class="questionUserNameContainer ms-3">
-                                        <p class="text-light d-inline-block m-0 p-0 fw-bold">@question.User.Name</p>
+                                        <p class="text-light d-inline-block fw-bold fs-5 m-0 p-0">@question.User.Name</p>
                                     </div>
                                 }
                                 <p class="ps-3 fs-4 text-light mb-0 questionText">@question.Text</p>
@@ -125,23 +125,23 @@
                                                 {
                                                     <div class="adminNameContainer">
                                                         <div class="adminName">
-                                                            <p class="text-light mb-0">@answer.User.Name👽</p>
+                                                            <p class="text-light mb-0 fs-5">@answer.User.Name👽</p>
                                                         </div>
                                                         <div class="adminName m-0">
-                                                            <p class="text-light ms-3 mb-0">Admin</p>
+                                                            <p class="text-light ms-3 mb-0 fs-5">Admin</p>
                                                         </div>
                                                     </div>
                                                 }
                                                 else
                                                 {
                                                     <div class="answerUserNameContainer">
-                                                        <p class="text-dark d-inline-block m-0 p-0 fw-bold">@answer.User?.Name</p>
+                                                        <p class="text-dark d-inline-block m-0 p-0 fw-bold fs-5">@answer.User?.Name</p>
                                                     </div>
                                                 }
                                                 <p class="fs-5 text-light fw-bold mb-0">@answer.CreationDate</p>
                                             </div>
                                             <div class="answerTextFlexContainer">
-                                                <p class="text-light fs-5 ms-3 mb-0">@answer.Text</p>
+                                                <p class="text-light fs-4 ms-3 mb-0">@answer.Text</p>
                                                 @if(ViewBag.UserId == answer.UserId || User.IsInRole(Roles.Admin))
                                                 {
                                                    <a class="answerOption"

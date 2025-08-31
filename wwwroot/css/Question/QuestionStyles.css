@@ -119,6 +119,9 @@
     opacity: 0.7;
     cursor: pointer;
 }
+.answerOption{
+    align-self: start;
+}
 .answerOption:hover {
     cursor: pointer;
     outline: 2px solid white;
