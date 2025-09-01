@@ -70,6 +70,7 @@ body {
     background: linear-gradient(45deg, #fff, #000, #42AFAF);
     background-size: 400% 400%;
     animation: gradient 7s ease infinite;
+    overflow-x: hidden !important;
 }
 .logo {
     margin: 0;
