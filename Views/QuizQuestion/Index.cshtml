@@ -12,27 +12,27 @@
     <div class="quizQuestionsContainer">
         <form method="post" asp-action="Create" asp-controller="QuizQuestion" asp-route-quizId="@ViewBag.quizId">
             <div class="mb-3">
-                <label for="QuestionText" class="form-label fs-4 text-light">Въпрос:</label>
+                <label for="QuestionText" class="form-label fs-4 text-light">Въпрос</label>
                 <input name="QuestionText" class="form-control" />
             </div>
             <div class="mb-3 gridGroup">
-                <label for="AnswerA" class="form-label fs-4 text-light">Отговор: A</label>
+                <label for="AnswerA" class="form-label fs-4 fw-bold">A</label>
                 <input name="AnswerA" class="form-control" />
             </div>
             <div class="mb-3 gridGroup">
-                <label for="AnswerB" class="form-label fs-4 text-light">Отговор: B</label>
+                <label for="AnswerB" class="form-label fs-4 fw-bold">B</label>
                 <input name="AnswerB" class="form-control" />
             </div>
             <div class="mb-3 gridGroup">
-                <label for="AnswerC" class="form-label fs-4 text-light">Отговор: C</label>
+                <label for="AnswerC" class="form-label fs-4 fw-bold">C</label>
                 <input name="AnswerC" class="form-control" />
             </div>
             <div class="mb-3 gridGroup">
-                <label for="AnswerD" class="form-label fs-4 text-light">Отговор: D</label>
+                <label for="AnswerD" class="form-label fs-4 fw-bold">D</label>
                 <input name="AnswerD" class="form-control" />
             </div>
             <div class="gridGroup">
-                <label for="CorrectAnswer" class="form-label fs-4 text-light">Верен отговор:</label>
+                <label for="CorrectAnswer" class="form-label fs-4 fw-bold">Верен отговор</label>
                 <input name="CorrectAnswer" class="form-control"/>
             </div>
             <div class="quizQuestionButtonContainer mt-5">
